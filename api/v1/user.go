@@ -18,7 +18,7 @@ func AddUser(c *gin.Context) {
 	var msg string
 	msg, code = myValidator.MyValidate(data)
 	if code != errmessage.SUCCESS {
-		c.JSON(http.StatusOK, gin.H{
+		c.JSON(http.StatusBadRequest, gin.H{
 			"status":  code,
 			"message": msg,
 		})

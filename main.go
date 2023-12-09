@@ -5,7 +5,7 @@ import (
 	"mountain/routes"
 )
 
-func main() {
+func main() { //我能在这看到是我写的
 	//引用数据库
 	model.InitDb()
 	//初始化路由
