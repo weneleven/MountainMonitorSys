@@ -11,3 +11,5 @@ func main() { //我能在这看到是我写的
 	//初始化路由
 	routes.InitRouter()
 }
+
+//12/09Goland推送测试
