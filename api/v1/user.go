@@ -81,7 +81,7 @@ func EditUsers(c *gin.Context) {
 	}
 	if code == errmessage.SUCCESS {
 		code = dao.CheckUserName(data.Username)
-		OrgUser := dao.FindUser(id)
+		OrgUser, _ := dao.FindUser(id)
 		if code == errmessage.SUCCESS || data.Username == OrgUser.Username {
 			code = dao.EditUser(id, &data)
 		}
