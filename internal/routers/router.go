@@ -3,14 +3,15 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	v1 "mountain/api/v1"
-	"mountain/middleware"
-	"mountain/utils"
+	"mountain/global"
+	"mountain/internal/middleware"
+	"mountain/pkg/logger"
 )
 
 func InitRouter() {
-	gin.SetMode(utils.AppMode)
+	gin.SetMode(global.ServerSetting.AppMode)
 	r := gin.Default()
-	r.Use(middleware.Logger())
+	r.Use(logger.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Cors())
 	auth_V1 := r.Group("/api/v1")
@@ -28,5 +29,6 @@ func InitRouter() {
 		public_V1.POST("login", v1.Login)
 	}
 
-	r.Run(utils.HttpPort)
+	r.Run(global.ServerSetting.HttpPort)
+
 }

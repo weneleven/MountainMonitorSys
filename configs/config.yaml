@@ -1,0 +1,18 @@
+Server:
+  AppMode: debug
+  HttpPort: :3000
+  ReadTimeout: 60
+  WriteTimeout: 60
+  JwtKey : 74fga1qwhd
+App:
+  DefaultPageSize: 10
+  MaxPageSize: 100
+  LogSavePath: storage/logs
+  LogFileName: app
+  LogFileExt: .log
+Database:
+  DBType: mysql
+  Username: root  # 填写你的数据库账号
+  Password: ljw147585/  # 填写你的数据库密码
+  Host: 127.0.0.1:3306
+  DBName: mountain

@@ -12,6 +12,7 @@ const (
 	ERROR_TOKEN_RUNTIME    = 1005
 	ERROR_TOKEN_WRONG      = 1006
 	ERROR_TOKEN_TYPE_WRONG = 1007
+	ERROR_PHONE_USED       = 1008
 )
 
 var codemsg = map[int]string{
@@ -24,6 +25,7 @@ var codemsg = map[int]string{
 	ERROR_TOKEN_RUNTIME:    "Token已过期",
 	ERROR_TOKEN_WRONG:      "Token不正确",
 	ERROR_TOKEN_TYPE_WRONG: "Token格式错误",
+	ERROR_PHONE_USED:       "手机号已被使用",
 }
 
 func Geterrmessage(code int) string {

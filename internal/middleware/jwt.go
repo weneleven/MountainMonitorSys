@@ -3,24 +3,21 @@ package middleware
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"mountain/utils"
-	"mountain/utils/errmessage"
+	"mountain/global"
+	"mountain/internal/model"
+	"mountain/pkg/errcode"
 	"net/http"
 	"strings"
 	"time"
 )
 
-var JwtKey = []byte(utils.JwtKey)
-
-type MyClaims struct { //定义要求
-	Username string `json:"username"`
-	jwt.StandardClaims
-}
+var JwtKey []byte
 
 // 生成token
 func Settoken(username string) (string, int) {
+	JwtKey = []byte(global.ServerSetting.JwtKey)
 	expertime := time.Now().Add(time.Hour * 10) //设置十个小时的有效期
-	SetClaims := MyClaims{
+	SetClaims := model.MyClaims{
 		username,
 		jwt.StandardClaims{
 			ExpiresAt: expertime.Unix(), //有效期至 返回Unix时间戳
@@ -36,13 +33,13 @@ func Settoken(username string) (string, int) {
 }
 
 // 验证token
-func Checktoken(token string) (*MyClaims, int) {
+func Checktoken(token string) (*model.MyClaims, int) {
 	// 先解析拿到jwttoken的指针对象，
-	setToken, _ := jwt.ParseWithClaims(token, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
+	setToken, _ := jwt.ParseWithClaims(token, &model.MyClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return JwtKey, nil
 	})
 	// 然后调用Vaild方法判断是否成功效验并获取jwt中的Clains类型转换断言为自定义Clamins
-	if key, _ := setToken.Claims.(*MyClaims); setToken.Valid {
+	if key, _ := setToken.Claims.(*model.MyClaims); setToken.Valid {
 		return key, errmessage.SUCCESS
 	} else {
 		return nil, errmessage.ERROR
