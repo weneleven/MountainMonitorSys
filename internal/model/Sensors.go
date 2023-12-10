@@ -2,6 +2,7 @@ package model
 
 import "gorm.io/gorm"
 
+// 每个传感器序列号唯一
 type Sensor struct {
 	gorm.Model
 	SensorSN            string  `gorm:"type:varchar(20);not null" json:"sensor_sn"`                                             //传感器序列号

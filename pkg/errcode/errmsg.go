@@ -19,6 +19,7 @@ const (
 
 	//code=3000..表示传感器模块的错误
 	ERROR_SENSOR_NOT_EXIST = 3001
+	ERROR_SENSORSN_USED    = 3002
 )
 
 var codemsg = map[int]string{
@@ -37,6 +38,7 @@ var codemsg = map[int]string{
 	ERROR_PROJECT_NOT_EXIST: "项目不存在",
 	//code=3000..表示传感器模块的错误
 	ERROR_SENSOR_NOT_EXIST: "传感器不存在",
+	ERROR_SENSORSN_USED:    "传感器序列号已被使用",
 }
 
 func Geterrmessage(code int) string {

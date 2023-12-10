@@ -45,7 +45,7 @@ func AddUser(c *gin.Context) {
 
 }
 
-// 查询用户链表
+// 查询用户列表
 func GetUsers(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))

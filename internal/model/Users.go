@@ -4,6 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// 每个用户名唯一 每个手机号唯一
 type User struct {
 	gorm.Model        //gorm提供的基础模型定义
 	Username   string `gorm:"type:varchar(20);not null" json:"username" validate:"required,min=4,max=12" label:"用户名"`

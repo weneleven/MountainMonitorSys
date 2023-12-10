@@ -20,6 +20,12 @@ func InitRouter() {
 		//用户模块的路由接口
 		auth_V1.PUT("user/:id", v1.EditUsers)
 		auth_V1.DELETE("user/:id", v1.DeleteUser)
+
+		//项目模块的路由接口
+
+		//传感器模块的路由接口
+		auth_V1.POST("sensor/add", v1.AddSensor)
+		auth_V1.GET("sensors", v1.GetSensors)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")

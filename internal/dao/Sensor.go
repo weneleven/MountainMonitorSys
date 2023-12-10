@@ -6,8 +6,18 @@ import (
 	errmessage "mountain/pkg/errcode"
 )
 
+// 检查是否存在此传感器
+func CheckSensorSN(sn string) int {
+	var sensor model.Sensor
+	global.DBEngine.Select("id").Where("sensor_sn = ?", sn).First(&sensor)
+	if sensor.ID > 0 {
+		return errmessage.ERROR_SENSORSN_USED
+	}
+	return errmessage.SUCCESS
+}
+
 // 新增传感器
-func CreatSensor(data *model.Sensor) int {
+func AddSensor(data *model.Sensor) int {
 	err := global.DBEngine.Create(data).Error
 	if err != nil {
 		return errmessage.ERROR

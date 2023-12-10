@@ -37,8 +37,9 @@ func CreateProject(project *model.Project) error {
 //     // 提交事务
 //     tx.Commit()
 
-//     return nil
-// }
+//	    return nil
+//	}
+//
 
 func GetProjects() ([]model.Project, error) {
 	var projects []model.Project
@@ -47,7 +48,6 @@ func GetProjects() ([]model.Project, error) {
 	if result.Error != nil {
 		return nil, result.Error
 	}
-
 	return projects, nil
 }
 
