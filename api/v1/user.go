@@ -71,9 +71,18 @@ func EditUsers(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	code = dao.CheckUserID(id)
 	_ = c.ShouldBindJSON(&data) //ShouldBindWith使用指定的绑定引擎绑定传递的结构指针
+	msg, Islegalcode := myValidator.MyValidate(data)
+	if code != errmessage.SUCCESS {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  Islegalcode,
+			"message": msg,
+		})
+		return
+	}
 	if code == errmessage.SUCCESS {
 		code = dao.CheckUserName(data.Username)
-		if code == errmessage.SUCCESS {
+		OrgUser := dao.FindUser(id)
+		if code == errmessage.SUCCESS || data.Username == OrgUser.Username {
 			code = dao.EditUser(id, &data)
 		}
 	}

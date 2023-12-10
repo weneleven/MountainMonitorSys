@@ -84,12 +84,24 @@ func DeleteUser(id int) int {
 func EditUser(id int, data *model.User) int {
 	var user model.User
 	maps := make(map[string]interface{})
-	maps["username"] = data.Username
-	maps["role"] = data.Role
-	maps["phone"] = data.Phone
-	maps["email"] = data.Email
-	maps["department"] = data.Department
-	maps["sex"] = data.Sex
+	if data.Username != "" {
+		maps["username"] = data.Username
+	}
+	if data.Role != 0 {
+		maps["role"] = data.Role
+	}
+	if data.Phone != "" {
+		maps["phone"] = data.Phone
+	}
+	if data.Email != "" {
+		maps["email"] = data.Email
+	}
+	if data.Department != "" {
+		maps["department"] = data.Department
+	}
+	if data.Sex != 0 {
+		maps["sex"] = data.Sex
+	}
 	err := global.DBEngine.Model(&user).Where("id=?", id).Updates(maps).Error
 	if err != nil {
 		return errmessage.ERROR
@@ -121,4 +133,11 @@ func CheckLogin(username string, password string) int {
 		return errmessage.ERROR_PASSWORD_WRONG
 	}
 	return errmessage.SUCCESS
+}
+
+// 返回此ID的用户
+func FindUser(Id int) model.User {
+	var user model.User
+	global.DBEngine.Where("id=?", Id).First(&user)
+	return user
 }
