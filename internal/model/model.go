@@ -27,6 +27,7 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	}
 	// 自动迁移用户的字段
 	err = db.AutoMigrate(&User{})
+	err = db.AutoMigrate(&Project{})
 	if err != nil {
 		return nil, fmt.Errorf("自动迁移失败: %w", err)
 	}
