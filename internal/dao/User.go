@@ -86,7 +86,10 @@ func EditUser(id int, data *model.User) int {
 	maps := make(map[string]interface{})
 	maps["username"] = data.Username
 	maps["role"] = data.Role
-
+	maps["phone"] = data.Phone
+	maps["email"] = data.Email
+	maps["department"] = data.Department
+	maps["sex"] = data.Sex
 	err := global.DBEngine.Model(&user).Where("id=?", id).Updates(maps).Error
 	if err != nil {
 		return errmessage.ERROR
