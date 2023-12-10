@@ -81,7 +81,7 @@ func UpdateSensor(id int, data *model.Sensor) int {
 	if sensor.Commit != "" {
 		maps["commit"] = sensor.Commit
 	}
-	result := global.DBEngine.Model(&sensor).Where("id = ?", id).Updates(data)
+	result := global.DBEngine.Model(&sensor).Where("id = ?", id).Updates(sensor)
 	if result.Error != nil {
 		return errmessage.ERROR
 	}
