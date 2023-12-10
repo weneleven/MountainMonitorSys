@@ -136,8 +136,11 @@ func CheckLogin(username string, password string) int {
 }
 
 // 返回此ID的用户
-func FindUser(Id int) model.User {
+func FindUser(Id int) (model.User, int) {
 	var user model.User
-	global.DBEngine.Where("id=?", Id).First(&user)
-	return user
+	err := global.DBEngine.Where("id=?", Id).First(&user)
+	if err != nil {
+		return user, errmessage.ERROR_USER_NOT_EXIST
+	}
+	return user, errmessage.SUCCESS
 }

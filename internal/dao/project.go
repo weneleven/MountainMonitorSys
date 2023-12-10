@@ -66,6 +66,5 @@ func UpdateProject(project *model.Project) error {
 	if result.Error != nil {
 		return result.Error
 	}
-
 	return nil
 }
