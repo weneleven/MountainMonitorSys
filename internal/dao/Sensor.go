@@ -41,13 +41,13 @@ func GetSensors(pageSize int, pageNum int) ([]model.Sensor, int64) {
 }
 
 // 返回此ID的传感器
-func GetSensorByID(id int) (*model.Sensor, int) {
+func GetSensorByID(id int) (model.Sensor, int) {
 	var sensor model.Sensor
-	result := global.DBEngine.Where("id = ?", id).First(&sensor)
-	if result.Error != nil {
-		return nil, errmessage.ERROR_SENSOR_NOT_EXIST
+	err := global.DBEngine.Where("id = ?", id).First(&sensor).Error
+	if err != nil {
+		return sensor, errmessage.ERROR_SENSOR_NOT_EXIST
 	}
-	return &sensor, errmessage.SUCCESS
+	return sensor, errmessage.SUCCESS
 }
 
 // 删除传感器
@@ -60,8 +60,8 @@ func DeleteSensor(id int) int {
 	return errmessage.SUCCESS
 }
 
-// 更新传感器
-func UpdateSensor(id int, data *model.Sensor) int {
+// 编辑传感器
+func EditSensor(id int, data *model.Sensor) int {
 	var sensor model.Sensor
 	maps := make(map[string]interface{}) //设备号无法更新
 	if sensor.Longitude != 0 {
@@ -91,8 +91,8 @@ func UpdateSensor(id int, data *model.Sensor) int {
 	if sensor.Commit != "" {
 		maps["commit"] = sensor.Commit
 	}
-	result := global.DBEngine.Model(&sensor).Where("id = ?", id).Updates(sensor)
-	if result.Error != nil {
+	err := global.DBEngine.Model(&sensor).Where("id = ?", id).Updates(sensor).Error
+	if err != nil {
 		return errmessage.ERROR
 	}
 	return errmessage.SUCCESS

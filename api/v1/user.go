@@ -68,23 +68,48 @@ func GetUsers(c *gin.Context) {
 // 编辑用户
 func EditUsers(c *gin.Context) {
 	var data model.User
+	var OrgUser model.User
 	id, _ := strconv.Atoi(c.Param("id"))
-	code = dao.CheckUserID(id)
-	_ = c.ShouldBindJSON(&data) //ShouldBindWith使用指定的绑定引擎绑定传递的结构指针
-	msg, Islegalcode := myValidator.MyValidate(data)
+	OrgUser, code = dao.GetUserByID(id)
 	if code != errmessage.SUCCESS {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"status":  Islegalcode,
+		c.JSON(http.StatusOK, gin.H{
+			"status":  code,
+			"message": errmessage.Geterrmessage(code),
+		})
+		return
+	}
+	_ = c.ShouldBindJSON(&data) //ShouldBindWith使用指定的绑定引擎绑定传递的结构指针
+	//如果没有传入某个值则使用原来的值
+	data.Password = OrgUser.Password
+	if data.Username == "" {
+		data.Username = OrgUser.Username
+	}
+	if data.Phone == "" {
+		data.Phone = OrgUser.Phone
+	}
+	if data.Role == 0 {
+		data.Role = OrgUser.Role
+	}
+	if data.Email == "" {
+		data.Email = OrgUser.Email
+	}
+	if data.Department == "" {
+		data.Department = OrgUser.Department
+	}
+	if data.Sex == 0 {
+		data.Sex = OrgUser.Sex
+	}
+	msg, IsLegalCode := myValidator.MyValidate(data)
+	if IsLegalCode != errmessage.SUCCESS {
+		c.JSON(http.StatusOK, gin.H{
+			"status":  IsLegalCode,
 			"message": msg,
 		})
 		return
 	}
-	if code == errmessage.SUCCESS {
-		code = dao.CheckUserName(data.Username)
-		OrgUser, _ := dao.FindUser(id)
-		if code == errmessage.SUCCESS || data.Username == OrgUser.Username {
-			code = dao.EditUser(id, &data)
-		}
+	code = dao.CheckUserName(data.Username)
+	if code == errmessage.SUCCESS || data.Username == OrgUser.Username {
+		code = dao.EditUser(id, &data)
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,                           //状态码

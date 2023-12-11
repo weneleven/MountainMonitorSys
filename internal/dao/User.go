@@ -109,19 +109,6 @@ func EditUser(id int, data *model.User) int {
 	return errmessage.SUCCESS
 }
 
-// 检查用户ID
-func CheckUserID(ID int) int {
-	var user model.User
-	err := global.DBEngine.Where("id = ?", ID).First(&user).Error
-	if err != nil {
-		if gorm.IsRecordNotFoundError(err) {
-			return errmessage.ERROR_USER_NOT_EXIST // 用户不存在
-		}
-		return errmessage.ERROR // 查询出错
-	}
-	return errmessage.SUCCESS // 用户存在
-}
-
 // 检查登录
 func CheckLogin(username string, password string) int {
 	var user model.User
@@ -136,9 +123,9 @@ func CheckLogin(username string, password string) int {
 }
 
 // 返回此ID的用户
-func FindUser(Id int) (model.User, int) {
+func GetUserByID(Id int) (model.User, int) {
 	var user model.User
-	err := global.DBEngine.Where("id=?", Id).First(&user)
+	err := global.DBEngine.Where("id=?", Id).First(&user).Error
 	if err != nil {
 		return user, errmessage.ERROR_USER_NOT_EXIST
 	}
