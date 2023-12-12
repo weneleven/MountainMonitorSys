@@ -61,3 +61,21 @@ func UpdateProject(project *model.Project) int {
 	}
 	return errmessage.SUCCESS
 }
+
+// 删除项目下传感器
+func DeleteProjectSensor(id int) int {
+	var sensor model.Sensor
+	var count int64
+	// 首先检查是否存在匹配的记录,即使不存在,也返回200
+	global.DBEngine.Model(&sensor).Where("project_id = ?", id).Count(&count)
+	if count == 0 {
+		return errmessage.SUCCESS
+	}
+	// 存在匹配的记录，执行删除操作
+	result := global.DBEngine.Where("project_id = ?", id).Delete(&sensor)
+	if result.Error != nil {
+		return errmessage.ERROR
+	}
+
+	return errmessage.SUCCESS
+}
