@@ -1,0 +1,14 @@
+time="2023-12-12 12:29:15" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=POST datasize=197 path=/api/v1/login spendtime="36 ms" status=200
+time="2023-12-12 12:32:04" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=POST datasize=40 path=/api/v1/project/add spendtime="0 ms" status=200
+time="2023-12-12 12:34:17" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=POST datasize=43 path=/api/v1/project/add spendtime="0 ms" status=200
+time="2023-12-12 12:34:36" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=POST datasize=43 path=/api/v1/project/add spendtime="0 ms" status=200
+time="2023-12-12 12:37:01" level=warning Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=POST datasize=54 path=/api/v1/project/add spendtime="0 ms" status=400
+time="2023-12-12 12:38:21" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=POST datasize=29 path=/api/v1/project/add spendtime="105 ms" status=200
+time="2023-12-12 12:39:26" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=PUT datasize=29 path=/api/v1/project/1 spendtime="13 ms" status=200
+time="2023-12-12 12:42:09" level=warning Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=GET datasize=0 path=/api/v1/project spendtime="0 ms" status=404
+time="2023-12-12 12:42:13" level=warning Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=GET datasize=0 path=/api/v1/project spendtime="0 ms" status=404
+time="2023-12-12 12:42:15" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=GET datasize=703 path=/api/v1/projects spendtime="8 ms" status=200
+time="2023-12-12 12:43:49" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=GET datasize=703 path=/api/v1/projects spendtime="8 ms" status=200
+time="2023-12-12 12:44:17" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=DELETE datasize=29 path=/api/v1/project/1 spendtime="7 ms" status=200
+time="2023-12-12 12:51:10" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=DELETE datasize=40 path=/api/v1/project/1 spendtime="0 ms" status=200
+time="2023-12-12 12:51:12" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=DELETE datasize=40 path=/api/v1/project/1 spendtime="0 ms" status=200

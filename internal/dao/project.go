@@ -3,68 +3,61 @@ package dao
 import (
 	"mountain/global"
 	"mountain/internal/model"
+	errmessage "mountain/pkg/errcode"
 )
 
-func CreateProject(project *model.Project) error {
+func CreateProject(project *model.Project) int {
 	result := global.DBEngine.Create(project)
 	if result.Error != nil {
-		return result.Error
+		return errmessage.ERROR
 	}
 
-	return nil
+	return errmessage.SUCCESS
 }
 
-// func DeleteProjectAndSensors(id uint) error {
-//     // 开始数据库事务
-//     tx := global.DBEngine.Begin()
+func DeleteProject(id int) int {
+	// 开始数据库事务
+	tx := global.DBEngine.Begin()
 
-//     // 删除项目
-//     result := tx.Where("id = ?", id).Delete(&model.Project{})
-//     if result.Error != nil {
-//         // 回滚事务并返回错误
-//         tx.Rollback()
-//         return result.Error
-//     }
-
-//     // 删除与项目关联的传感器数据
-//     result = tx.Where("project_id = ?", id).Delete(&model.Sensor{})
-//     if result.Error != nil {
-//         // 回滚事务并返回错误
-//         tx.Rollback()
-//         return result.Error
-//     }
-
-//     // 提交事务
-//     tx.Commit()
-
-//	    return nil
-//	}
-//
-
-func GetProjects() ([]model.Project, error) {
-	var projects []model.Project
-
-	result := global.DBEngine.Find(&projects)
+	// 删除项目
+	result := tx.Where("id = ?", id).Delete(&model.Project{})
 	if result.Error != nil {
-		return nil, result.Error
+		// 回滚事务并返回错误
+		tx.Rollback()
+		return errmessage.ERROR
 	}
-	return projects, nil
+	tx.Commit()
+	return errmessage.SUCCESS
 }
 
-func GetProjectByID(id uint) (*model.Project, error) {
+
+func GetProjects(pageSize int, pageNum int) ([]model.Project, int64) {
+	var projects []model.Project
+	var total int64
+	offset := (pageNum - 1) * pageSize
+	if pageSize == -1 && pageNum == -1 {
+		offset = -1
+	}
+	err := global.DBEngine.Limit(pageSize).Offset(offset).Find(&projects).Count(&total).Error
+	if err != nil {
+		return nil, 0
+	}
+	return projects, total
+}
+func GetProjectByID(id int) (*model.Project, int) {
 	var project model.Project
 	result := global.DBEngine.Where("id = ?", id).First(&project)
 	if result.Error != nil {
-		return nil, result.Error
+		return nil, errmessage.ERROR
 	}
 
-	return &project, nil
+	return &project, errmessage.SUCCESS
 }
 
-func UpdateProject(project *model.Project) error {
+func UpdateProject(project *model.Project) int {
 	result := global.DBEngine.Save(project)
 	if result.Error != nil {
-		return result.Error
+		return errmessage.ERROR
 	}
-	return nil
+	return errmessage.SUCCESS
 }

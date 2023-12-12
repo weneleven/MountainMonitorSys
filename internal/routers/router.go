@@ -22,6 +22,10 @@ func InitRouter() {
 		auth_V1.DELETE("user/:id", v1.DeleteUser)
 
 		//项目模块的路由接口
+		auth_V1.POST("project/add",v1.AddProject)
+		auth_V1.GET("projects", v1.GetProjects)
+		auth_V1.DELETE("project/:id", v1.DeleteProjectAndSensors)
+		auth_V1.PUT("project/:id", v1.UpdateProject)
 
 		//传感器模块的路由接口
 		auth_V1.POST("sensor/add", v1.AddSensor)
