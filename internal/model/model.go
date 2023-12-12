@@ -1,6 +1,7 @@
 package model
 
 import (
+	"database/sql"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -37,5 +38,17 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	sqlDB.SetMaxOpenConns(100)                 //数据库最大连接数量
 	sqlDB.SetConnMaxLifetime(10 * time.Second) //链接最大可复用时间
 
+	return db, nil
+}
+
+// 添加TDengine连接
+func NewDb() (*sql.DB, error) {
+	var taosDSN = "root:taosdata@tcp(124.70.83.36:6030)/"
+	db, err := sql.Open("taosSql", taosDSN)
+	if err != nil {
+		fmt.Println("failed to connect TDengine, err:", err)
+	}
+	defer db.Close()
+	fmt.Println("connected")
 	return db, nil
 }

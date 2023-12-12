@@ -1,10 +1,12 @@
 package main
 
 import (
+	_ "github.com/taosdata/driver-go/v3/taosRestful"
+	_ "github.com/taosdata/driver-go/v3/taosSql"
 	"log"
 	"mountain/global"
 	"mountain/internal/model"
-	"mountain/internal/routers"
+	routes "mountain/internal/routers"
 	"mountain/pkg/setting"
 	"time"
 )
@@ -16,6 +18,7 @@ func init() {
 	}
 
 	err = setupDBEngine()
+	//err = setupDb()
 	if err != nil {
 		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
@@ -53,6 +56,15 @@ func setupSetting() error {
 func setupDBEngine() error {
 	var err error
 	global.DBEngine, err = model.NewDBEngine(global.DatabaseSetting)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+func setupDb() error {
+	var err error
+	global.Db, err = model.NewDb()
 	if err != nil {
 		return err
 	}

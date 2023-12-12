@@ -12,3 +12,4 @@ time="2023-12-12 12:43:49" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBo
 time="2023-12-12 12:44:17" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=DELETE datasize=29 path=/api/v1/project/1 spendtime="7 ms" status=200
 time="2023-12-12 12:51:10" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=DELETE datasize=40 path=/api/v1/project/1 spendtime="0 ms" status=200
 time="2023-12-12 12:51:12" level=info Agent=PostmanRuntime/7.35.0 Hostname=MacBook-Pro.local Ip=127.0.0.1 Method=DELETE datasize=40 path=/api/v1/project/1 spendtime="0 ms" status=200
+time="2023-12-12 18:59:22" level=info Agent=PostmanRuntime/7.35.0 Hostname=coco.local Ip="::1" Method=GET datasize=259 path=/api/v1/users spendtime="17 ms" status=200
