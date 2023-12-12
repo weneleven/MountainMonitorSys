@@ -62,20 +62,13 @@ func DeleteProjectAndSensors(c *gin.Context) {
 		return
 	}
 	code = dao.DeleteProjectSensor(id)
-	if code != errmessage.SUCCESS {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"status":  code,
-			"message": errmessage.Geterrmessage(code),
-		})
-		return
-	}
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmessage.Geterrmessage(code),
 	})
 }
 
-//不确定前端传参方式emmm
+// 不确定前端传参方式emmm
 func UpdateProject(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	data, code := dao.GetProjectByID(id)
