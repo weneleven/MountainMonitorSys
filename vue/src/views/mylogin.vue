@@ -13,7 +13,7 @@
             <el-input prefix-icon="Lock" v-model="data.form.password" placeholder="请输入密码"  show-password/>
           </el-form-item>
           <el-form-item >
-            <el-button type="primary" style="width: 100%" @click="login">登录</el-button>
+           <el-button type="primary" style="width: 100%" @click="login">登录</el-button>
           </el-form-item>
         </el-form>
         <div style="text-align: right;font-size: small">
@@ -26,55 +26,29 @@
 
 
 <script setup>
-import { reactive, ref } from 'vue'
-import axios from 'axios'
-import { useRouter } from 'vue-router'
-
+import { reactive,ref } from 'vue'
 const data = reactive({
-  form: {}
+  form:{
+  }
 })
-
 const rules = reactive({
   username: [
     { required: true, message: '请输入账号', trigger: 'blur' },
+    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
   ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
   ],
 })
-
 const formRef = ref()
-const router = useRouter()
 const login = () => {
-  formRef.value.validate(async (valid) => {
-    if (valid) {
-      try {
-        // 发送登录请求到后端 API
-        const response = await axios.post('http://localhost:3000/api/v1/login', data.form)
+  formRef.value.validate((valid) => {
+    console.log(valid)
+  }
+)}
 
-        // 根据后端返回的状态码处理逻辑
-        if (response.data.status === 200) {
-          // 登录成功，提示并跳转到其他页面
-          ElMessage({
-            message: response.data.message,
-            type: 'success',
-          })
-          //存储登录成功后的username到本地，之后使用
-          localStorage.setItem('user', JSON.stringify(response.data.username));
-          router.push('/manager')
-        } else {
-          // 登录失败，给出提示
-          ElMessage.error(response.data.message || 'Login failed');
-          console.error('Login failed:', response.data.message)
-        }
-      } catch (error) {
-        console.error('Error during login:', error)
-      }
-    }
-  })
-}
 </script>
-
 <style scoped>
 .login-container{
   min-height: 100vh;

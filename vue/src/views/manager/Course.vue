@@ -1,0 +1,373 @@
+<template>
+  <div class="common-layout">
+    <el-container>
+      <el-header>
+        <div style="height: 60px; background-color:#ffffff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
+          <div style="flex: 1">
+            <div style="padding-left: 20px; display: flex; align-items: center">
+              <img src="@/assets/imgs/logo.png" alt="" style="width: 40px">
+              <div style="font-weight: bold; font-size: 24px; margin-left: 5px">山体滑坡监测系统</div>
+            </div>
+          </div>
+          <div style="width: fit-content; padding-right: 10px; display: flex; align-items: center;">
+            <img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="" style="width: 40px; height: 40px">
+            <div style="margin-left: 5px">欢迎您，{{username}}</div>
+          </div>
+        </div>
+      </el-header>
+      <el-container>
+        <el-aside width="200px">
+          <div style="width: 200px; border-right: 1px solid #ddd; min-height: calc(100vh - 60px)">
+            <el-menu
+                router
+                style="border: none"
+                :default-active="$route.path"
+                :default-openeds="['/home', '2']"
+            >
+              <el-menu-item index="/home">
+                <el-icon><HomeFilled /></el-icon>
+                <span>系统首页</span>
+              </el-menu-item>
+              <el-sub-menu index="2">
+                <template #title>
+                  <el-icon><MapLocation /></el-icon>
+                  <span>数据视图</span>
+                </template>
+                <el-menu-item index="/manager">
+                  <span>项目地图</span>
+                </el-menu-item>
+              </el-sub-menu>
+              <el-menu-item index="/course">
+                <el-icon><Document /></el-icon>
+                <span>项目信息</span>
+              </el-menu-item>
+              <el-menu-item index="/person">
+                <el-icon><Tools /></el-icon>
+                <span>传感器信息</span>
+              </el-menu-item>
+              <el-menu-item index="/person">
+                <el-icon><Document /></el-icon>
+                <span>数据查看</span>
+              </el-menu-item>
+              <el-menu-item index="/person">
+                <el-icon><DataLine /></el-icon>
+                <span>数据分析</span>
+              </el-menu-item>
+              <el-menu-item index="login" @click="logout">
+                <el-icon><SwitchButton /></el-icon>
+                <span>退出系统</span>
+              </el-menu-item>
+            </el-menu>
+          </div>
+        </el-aside>
+        <el-main>
+          <div>
+            <!-- 搜索部分 -->
+            <div class="card" style="margin-bottom: 10px;">
+              <el-input v-model="searchQuery" style="width: 300px; margin-right: 10px" placeholder="请输入项目名称"></el-input>
+              <el-button type="primary" @click="search">查询</el-button>
+              <el-button type="info" style="margin: 0 10px" @click="resetSearch">重置</el-button>
+            </div>
+
+            <div class="card" style="margin-bottom: 10px">
+
+              <el-table :data="pagedTableData" stripe>
+                <el-table-column label="项目名称" prop="ProjectName"></el-table-column>
+                <el-table-column label="项目简称" prop="ProjectShortName"></el-table-column>
+                <el-table-column label="项目类型" prop="ProjectType"></el-table-column>
+                <el-table-column label="项目位置" prop="Location"></el-table-column>
+                <el-table-column label="预警启用" align="center">
+                  <template #default="scope">
+                    <el-icon-check v-if="scope.row.AlertsEnabled" class="el-icon-check"></el-icon-check>
+                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
+                  </template>
+                </el-table-column>
+                <el-table-column label="自动推送预警" align="center">
+                  <template #default="scope">
+                    <el-icon-check v-if="scope.row.AutoAlert" class="el-icon-check"></el-icon-check>
+                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
+                  </template>
+                </el-table-column>
+                <el-table-column label="离线推送" align="center">
+                  <template #default="scope">
+                    <el-icon-check v-if="scope.row.OfflinePushEnabled" class="el-icon-check"></el-icon-check>
+                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
+                  </template>
+                </el-table-column>
+                <el-table-column label="离线推送频率(s)" prop="OfflinePushFrequency"></el-table-column>
+                <el-table-column label="地图比例" prop="MapScale"></el-table-column>
+                <el-table-column label="短信签名" prop="SmsSignature"></el-table-column>
+                <el-table-column label="备注信息" prop="Remark"></el-table-column>
+                <el-table-column label="项目简介" prop="ProjectDescription"></el-table-column>
+                <el-table-column label="观察者" prop="ObserverName"></el-table-column>
+                <el-table-column label="校验者" prop="ValidatorName"></el-table-column>
+                <el-table-column label="计算者" prop="CalculatorName"></el-table-column>
+                <el-table-column label="审核者" prop="ReviewerName"></el-table-column>
+                <el-table-column label="检测单位名称" prop="InspectionUnitName"></el-table-column>
+                <el-table-column label="用户ID" prop="UserID"></el-table-column>
+                <el-table-column label="操作" align="center" width="160">
+                  <template v-slot="scope">
+                    <el-button type="primary" @click="handleEdit">编辑</el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </div>
+
+            <div class="card">
+              <el-pagination
+                  background
+                  layout="prev, pager, next"
+                  :page-size="pageSize"
+                  :current-page.sync="currentPage"
+                  :total="totalItems"
+                  @current-change="handlePageChange"
+              />
+            </div>
+
+            <el-dialog title="修改数据" width="40%" v-model="data.formVisible" :close-on-click-modal="false" destroy-on-close>
+              <el-form ref="formRef" :model="data.form" label-width="150px">
+
+                <el-form-item label="项目名称" prop="ProjectName"  required>
+                  <el-input v-model="data.form.ProjectName" />
+                </el-form-item>
+
+                <el-form-item label="项目简称" prop="ProjectShortName">
+                  <el-input v-model="data.form.ProjectShortName" type="textarea" />
+                </el-form-item>
+
+                <el-form-item label="项目类型" prop="projectType">
+                  <el-radio-group v-model="data.form.ProjectType">
+                    <el-radio label="边坡" />
+                    <el-radio label="水库" />
+                    <el-radio label="桥梁" />
+                  </el-radio-group>
+                </el-form-item>
+
+                <el-form-item label="项目位置" prop="Location">
+                  <el-input v-model="data.form.Location" type="textarea" />
+                </el-form-item>
+
+                <el-form-item label="自动推送预警" prop="AutoAlert">
+                  <el-switch v-model="data.form.AutoAlert" />
+                </el-form-item>
+
+                <el-form-item label="预警启用" prop="AlertsEnabled">
+                  <el-switch v-model="data.form.AlertsEnabled" />
+                </el-form-item>
+
+                <el-form-item label="离线推送" prop="OfflinePushEnabled">
+                  <el-switch v-model="data.form.OfflinePushEnabled" />
+                </el-form-item>
+
+
+                <el-form-item label="离线推送频率(s)" prop="offlineFrequency">
+                  <el-input-number v-model="data.form.OfflinePushFrequency" :min="0" :max="86400" />
+                </el-form-item>
+
+
+                <el-form-item label="地图比例" prop="mapScale">
+                  <el-input-number v-model="data.form.MapScale" :min="0" />
+                </el-form-item>
+
+                <el-form-item label="短信签名" prop="smsSignature">
+                  <el-input v-model="data.form.SmsSignature" />
+                </el-form-item>
+
+                <el-form-item label="项目简介" prop="ProjectDescription">
+                  <el-input v-model="data.form.ProjectDescription" type="textarea" />
+                </el-form-item>
+
+                <el-form-item label="备注" prop="Remark">
+                  <el-input v-model="data.form.Remark" type="textarea" />
+                </el-form-item>
+
+                <!-- 操作按钮 -->
+                <el-form-item>
+                  <el-button type="primary" @click="submitEdit">保存更改</el-button>
+                  <el-button @click="resetEditForm">取消</el-button>
+                </el-form-item>
+              </el-form>
+            </el-dialog>
+
+
+
+          </div>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
+</template>
+
+
+
+<script setup>
+import request from "@/utils/request";
+import { reactive, ref, onMounted, computed } from "vue";
+import { ElMessageBox } from "element-plus";
+import { useRoute } from 'vue-router';
+
+const $route = useRoute()
+console.log($route.path)
+
+
+const username = JSON.parse(localStorage.getItem('user') || '{}')
+
+
+const logout = () => {
+  window.location.href = '/'; // 重定向到登录页面
+}
+// 示例数据
+const totalItems = ref(100); // 可根据后端接口修改，使总数据数由后端提供
+const currentPage = ref(1);
+const pageSize = ref(2);
+const searchQuery = ref('');
+
+
+const data = reactive({
+  pageNum: 1,
+  formVisible: false,
+  form: {},
+  //测试数据
+  tableData: ref([
+    {
+      "ProjectName": "Turner, Johnson and Pham",
+      "ProjectShortName": "Inc",
+      "ProjectType": "Construction",
+      "Location": "8379 Paula Glen South Scottville, NJ 36016",
+      "AlertsEnabled": true,
+      "AutoAlert": false,
+      "OfflinePushEnabled": true,
+      "OfflinePushFrequency": 5900,
+      "MapScale": 1368,
+      "SmsSignature": "Edward Howard",
+      "Remark": "Short read break street picture through admit ever. Service adult view television night project worry.",
+      "ProjectDescription": "Mrs away cold fill sit energy.",
+      "ObserverName": "Vanessa Ward",
+      "ValidatorName": "Judy Soto",
+      "CalculatorName": "James Ryan",
+      "ReviewerName": "Shane Strickland",
+      "InspectionUnitName": "Adkins-Parker",
+      "UserID": 146
+    },
+    {
+      "ProjectName": "Moreno and Sons",
+      "ProjectShortName": "LLC",
+      "ProjectType": "Transportation",
+      "Location": "7858 John Lock Lake Jacob, AR 79282",
+      "AlertsEnabled": true,
+      "AutoAlert": true,
+      "OfflinePushEnabled": true,
+      "OfflinePushFrequency": 47330,
+      "MapScale": 70791,
+      "SmsSignature": "Brian Crawford",
+      "Remark": "Someone indeed air box standard author win base. Carry trade central never short other. Book magazine fact cost believe.",
+      "ProjectDescription": "Might early she their them newspaper market...",
+      "ObserverName": "Lindsey Robertson",
+      "ValidatorName": "Jennifer Collier",
+      "CalculatorName": "Thomas Lopez",
+      "ReviewerName": "Yvette Jones",
+      "InspectionUnitName": "Taylor-Keith",
+      "UserID": 846
+    },
+    {
+      "ProjectName": "Moreno and Sons",
+      "ProjectShortName": "LLC",
+      "ProjectType": "Transportation",
+      "Location": "7858 John Lock Lake Jacob, AR 79282",
+      "AlertsEnabled": true,
+      "AutoAlert": true,
+      "OfflinePushEnabled": true,
+      "OfflinePushFrequency": 47330,
+      "MapScale": 70791,
+      "SmsSignature": "Brian Crawford",
+      "Remark": "Someone indeed air box standard author win base. Carry trade central never short other. Book magazine fact cost believe.",
+      "ProjectDescription": "Might early she their them newspaper market...",
+      "ObserverName": "Lindsey Robertson",
+      "ValidatorName": "Jennifer Collier",
+      "CalculatorName": "Thomas Lopez",
+      "ReviewerName": "Yvette Jones",
+      "InspectionUnitName": "Taylor-Keith",
+      "UserID": 846
+    }
+  ])
+})
+
+// 从后端获取数据
+const fetchData = async () => {
+  try {
+    const response = await request.get('/api/');//初始化，查询全部数据
+    data.tableData = response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+// 执行搜索
+const search = async () => {
+  try {
+    const response = await request.get('/api/search', {
+      params: { query: searchQuery.value }
+    });
+    data.tableData = response.data;
+  } catch (error) {
+    console.error('Error searching:', error);
+  }
+};
+
+// 重置搜索
+const resetSearch = () => {
+  searchQuery.value = '';
+  fetchData(); // 重置后重新获取数据
+};
+
+// 计算当前页的数据
+const pagedTableData = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value;
+  const end = start + pageSize.value;
+  return data.tableData.slice(start, end);
+});
+
+// 处理页码变化
+const handlePageChange = (newPage) => {
+  currentPage.value = newPage;
+};
+
+
+request.get('/').then(res => {
+  console.log(res)
+})
+
+const handleEdit = (row) => {
+  let form = JSON.parse(JSON.stringify(row))
+  data.formVisible = true
+}
+
+const submitEdit = async () => {
+  try {
+    await request.put('/api/', data.form);//更新接口
+    data.formVisible = false;
+    // 重新获取更新后的数据列表
+    fetchData();
+  } catch (error) {
+    console.error('Error updating project:', error);
+  }
+};
+
+const resetEditForm = () => {
+  data.form = {}; // 清空表单数据
+  data.formVisible = false;
+};
+
+
+</script>
+
+<style scoped>
+
+.el-icon-check {
+  color: green;
+}
+
+.el-icon-close {
+  color: red;
+}
+</style>
