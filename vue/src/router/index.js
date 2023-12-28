@@ -24,6 +24,21 @@ const router = createRouter({
       component: () => import('@/views/manager/Home.vue')
     },
     {
+      path: '/sensor',
+      name: 'sensor',
+      component: () => import('@/views/manager/sensor.vue')
+    },
+    {
+      path: '/dataview',
+      name: 'dataview',
+      component: () => import('@/views/manager/dataview.vue')
+    },
+    {
+      path: '/analysis',
+      name: 'analysis',
+      component: () => import('@/views/manager/analysis.vue')
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('@/views/test.vue')

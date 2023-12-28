@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -12,6 +12,7 @@
     "ant-design-vue": "^4.0.7",
     "axios": "^1.6.2",
     "baidu-map": "^0.1.4",
+    "echarts": "^5.4.3",
     "element-plus": "^2.4.2",
     "sass": "^1.69.5",
     "unplugin-element-plus": "^0.8.0",

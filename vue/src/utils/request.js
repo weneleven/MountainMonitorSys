@@ -36,7 +36,7 @@ request.interceptors.response.use(
         }
         return res;
     },
-        error => {
+    error => {
         console.log('err' + error)
         return Promise.reject(error)
     }

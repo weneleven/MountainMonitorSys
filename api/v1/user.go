@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"mountain/internal/dao"
 	"mountain/internal/model"
@@ -29,14 +30,18 @@ func AddUser(c *gin.Context) {
 	code = dao.CheckUserName(data.Username)
 	if code != errmessage.SUCCESS {
 		IsSuccess = false
+		fmt.Println("failed checkusername")
 	}
 	code = dao.CheckUserPhone(data.Phone)
 	if code != errmessage.SUCCESS {
 		IsSuccess = false
+		fmt.Println("failed checkuserphone")
 	}
 	if IsSuccess {
 		code = dao.CreatUser(&data)
+		fmt.Println("creatUser")
 	}
+	fmt.Println(IsSuccess)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,                           //状态码
 		"data":    data,                           //数据

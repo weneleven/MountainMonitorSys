@@ -21,5 +21,6 @@ func Login(c *gin.Context) {
 		"status":  code,
 		"message": errmessage.Geterrmessage(code),
 		"token":   token,
+		"name": data.Username,
 	})
 }

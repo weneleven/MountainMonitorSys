@@ -16,7 +16,6 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 		databaseSetting.Host,
 		databaseSetting.DBName,
 	)
-
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println("连接数据库失败，请检查参数:", err)
@@ -30,6 +29,7 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	err = db.AutoMigrate(&User{})
 	err = db.AutoMigrate(&Project{})
 	err = db.AutoMigrate(&Sensor{})
+	err = db.AutoMigrate(&SensorData{})
 	if err != nil {
 		return nil, fmt.Errorf("自动迁移失败: %w", err)
 	}
@@ -43,12 +43,11 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 
 // 添加TDengine连接
 func NewDb() (*sql.DB, error) {
-	var taosDSN = "root:taosdata@tcp(124.70.83.36:6030)/"
-	db, err := sql.Open("taosSql", taosDSN)
+	var taosDSN = "root:taosdata@tcp(124.70.83.36:6030)/mountain"
+	taos, err := sql.Open("taosSql", taosDSN)
 	if err != nil {
 		fmt.Println("failed to connect TDengine, err:", err)
 	}
-	defer db.Close()
 	fmt.Println("connected")
-	return db, nil
+	return taos, nil
 }

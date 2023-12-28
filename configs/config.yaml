@@ -1,6 +1,6 @@
 Server:
   AppMode: debug
-  HttpPort: :3000
+  HttpPort: 0.0.0.0:3000
   ReadTimeout: 60
   WriteTimeout: 60
   JwtKey : 74fga1qwhd
@@ -13,6 +13,6 @@ App:
 Database:
   DBType: mysql
   Username: root  # 填写你的数据库账号
-  Password: ljw147585/  # 填写你的数据库密码
+  Password: 123456  # 填写你的数据库密码
   Host: 127.0.0.1:3306
   DBName: mountain

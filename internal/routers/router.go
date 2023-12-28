@@ -1,11 +1,13 @@
 package routes
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	v1 "mountain/api/v1"
 	"mountain/global"
 	"mountain/internal/middleware"
 	"mountain/pkg/logger"
+	"time"
 )
 
 func InitRouter() {
@@ -13,7 +15,14 @@ func InitRouter() {
 	r := gin.Default()
 	r.Use(logger.Logger())
 	r.Use(gin.Recovery())
-	r.Use(middleware.Cors())
+	// 使用 CORS 中间件配置
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"*"}  // 允许的前端域，可以是具体的域名，也可以是通配符 "*"
+	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Content-Length", "Accept-Encoding", "Authorization"}
+	config.AllowCredentials = true
+	config.MaxAge = 12 * time.Hour
+	r.Use(cors.New(config))  // 在所有路由之前使用 CORS 中间件
 	auth_V1 := r.Group("/api/v1")
 	auth_V1.Use(middleware.JwtToken()) //需要鉴权的
 	{
@@ -25,13 +34,15 @@ func InitRouter() {
 		auth_V1.POST("project/add",v1.AddProject)
 		auth_V1.GET("projects", v1.GetProjects)
 		auth_V1.DELETE("project/:id", v1.DeleteProjectAndSensors)
-		auth_V1.PUT("project/:id", v1.UpdateProject)
-
+		auth_V1.PUT("project/updateById", v1.UpdateProject)
+		auth_V1.GET("project/getByName",v1.GetProjectByNameHander)
 		//传感器模块的路由接口
 		auth_V1.POST("sensor/add", v1.AddSensor)
 		auth_V1.GET("sensors", v1.GetSensors)
 		auth_V1.DELETE("sensor/:id", v1.DeleteSensor)
 		auth_V1.PUT("sensor/:id", v1.EditSensor)
+		//数据处理与展示模块
+		auth_V1.GET("data/get", v1.GetSensorData)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")

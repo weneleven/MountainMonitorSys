@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"fmt"
 	"mountain/global"
 	"mountain/internal/model"
 	errmessage "mountain/pkg/errcode"
@@ -11,7 +12,6 @@ func CreateProject(project *model.Project) int {
 	if result.Error != nil {
 		return errmessage.ERROR
 	}
-
 	return errmessage.SUCCESS
 }
 
@@ -53,6 +53,19 @@ func GetProjectByID(id int) (*model.Project, int) {
 
 	return &project, errmessage.SUCCESS
 }
+func GetProjectByName(name string) (*model.Project, int){
+	var project model.Project
+	fmt.Println(name)
+	//result := global.DBEngine.Where("project_name = ?", name).First(&project)
+	// 使用 LIKE 进行模糊查询
+	result := global.DBEngine.Where("project_name LIKE ?", "%" + name + "%").Find(&project)
+	if result.Error != nil {
+		fmt.Println(result.Error)
+		return nil, errmessage.ERROR
+	}
+	return &project, errmessage.SUCCESS
+}
+
 
 func UpdateProject(project *model.Project) int {
 	result := global.DBEngine.Save(project)
