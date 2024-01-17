@@ -5,7 +5,7 @@
         <div style="height: 60px; background-color:#ffffff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
           <div style="flex: 1">
             <div style="padding-left: 20px; display: flex; align-items: center">
-              <img src="@/assets/imgs/logo.png" alt="" style="width: 40px">
+              <img src="@/assets/imgs/newlogo.jpg" alt="" style="width: 40px">
               <div style="font-weight: bold; font-size: 24px; margin-left: 5px">山体滑坡监测系统</div>
             </div>
           </div>

@@ -5,7 +5,7 @@
         <div style="height: 60px; background-color:#ffffff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
           <div style="flex: 1">
             <div style="padding-left: 20px; display: flex; align-items: center">
-              <img src="@/assets/imgs/logo.png" alt="" style="width: 40px">
+              <img src="@/assets/imgs/newlogo.jpg" alt="" style="width: 40px">
               <div style="font-weight: bold; font-size: 24px; margin-left: 5px">山体滑坡监测系统</div>
             </div>
           </div>
@@ -81,6 +81,9 @@
               </el-form-item>
             </el-form>
 <!-- 数据折线图           -->
+            <div id="LC01" style="width: 1000px;height:400px;">
+              h
+            </div>
             <div id="LC02" style="width: 1000px;height:400px;">
             </div>
           </div>
@@ -134,8 +137,61 @@ const fetchData = async () => {
     });
     data.tableData = response.data;
     // 过滤数据，只获取特定 sensor_name 的数据
+    var target1 = "JC01"
     var targetSensorName = "JC02";
+    var filteredData1 = data.tableData.filter(item => item.sensor_name === target1);
     var filteredData = data.tableData.filter(item => item.sensor_name === targetSensorName);
+    //JC01
+    var collectTimes1 = filteredData1.map(item => item.collect_time);
+    var sumXData1 = filteredData1.map(item => item.sum_x);
+    var sumYData1 = filteredData1.map(item => item.sum_y);
+    var sumHData1 = filteredData1.map(item => item.sum_h);
+    const myChart1 = echarts.init(document.getElementById('LC01'));
+    var option1 = {
+      title: {
+        text: "LC01"
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {    //图例组件
+        data:['sum_x','sum_y','sum_h']
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: collectTimes1
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series:  [
+        {
+          name: 'sum_x',
+          type: 'line',
+          stack: '总量',
+          data: sumXData1
+        },
+        {
+          name: 'sum_y',
+          type: 'line',
+          stack: '总量',
+          data: sumYData1
+        },
+        {
+          name: 'sum_h',
+          type: 'line',
+          data: sumHData1
+        }
+      ]
+    };
+    //4.使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
     //整理数据
     var collectTimes = filteredData.map(item => item.collect_time);
     var sumXData = filteredData.map(item => item.sum_x);
@@ -181,7 +237,6 @@ const fetchData = async () => {
         {
           name: 'sum_h',
           type: 'line',
-          stack: '总量',
           data: sumHData
         }
       ]

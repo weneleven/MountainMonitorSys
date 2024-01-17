@@ -22,7 +22,7 @@ func GetSensorData() ([]model.SensorData, int64) {
 //从文件中批量读取采集数据存入mysql
 func Readfile() {
 	// 读取 CSV 文件
-	file, err := os.Open("/mycode/data/data2.csv")
+	file, err := os.Open("/mycode/data/data.csv")
 	if err != nil {
 		fmt.Println("打开文件失败:", err)
 		return
