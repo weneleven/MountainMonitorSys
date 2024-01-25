@@ -8,3 +8,7 @@ time="2024-01-25 20:46:48" level=info Agent="Apifox/1.0.0 (https://apifox.com)" 
 time="2024-01-25 20:46:53" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=POST datasize=241 path=/api/v1/login spendtime="43 ms" status=200
 time="2024-01-25 20:47:11" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=PUT datasize=29 path=/api/v1/sensor/1 spendtime="13 ms" status=200
 time="2024-01-25 20:47:17" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=GET datasize=410 path=/api/v1/sensors spendtime="0 ms" status=200
+time="2024-01-25 20:48:27" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=POST datasize=241 path=/api/v1/login spendtime="49 ms" status=200
+time="2024-01-25 20:48:39" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=PUT datasize=29 path=/api/v1/sensor/1 spendtime="10 ms" status=200
+time="2024-01-25 20:48:46" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=PUT datasize=29 path=/api/v1/sensor/1 spendtime="6 ms" status=200
+time="2024-01-25 20:48:52" level=info Agent="Apifox/1.0.0 (https://apifox.com)" Hostname=LAPTOP-FH0DMLT2 Ip="::1" Method=GET datasize=410 path=/api/v1/sensors spendtime="4 ms" status=200
