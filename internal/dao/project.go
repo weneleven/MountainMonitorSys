@@ -18,7 +18,6 @@ func CreateProject(project *model.Project) int {
 func DeleteProject(id int) int {
 	// 开始数据库事务
 	tx := global.DBEngine.Begin()
-
 	// 删除项目
 	result := tx.Where("id = ?", id).Delete(&model.Project{})
 	if result.Error != nil {
@@ -67,8 +66,9 @@ func GetProjectByName(name string) (*model.Project, int){
 }
 
 
-func UpdateProject(project *model.Project) int {
-	result := global.DBEngine.Save(project)
+func UpdateProject(project *model.Project,id int) int {
+	result := global.DBEngine.Model(&model.Project{}).Where("id = ?", id).Updates(project)
+	//result := global.DBEngine.Save(project)
 	if result.Error != nil {
 		return errmessage.ERROR
 	}

@@ -6,7 +6,6 @@ import (
 	_ "github.com/taosdata/driver-go/v3/taosSql"
 	"log"
 	"mountain/global"
-	"mountain/internal/dao"
 	"mountain/internal/model"
 	routes "mountain/internal/routers"
 	"mountain/pkg/setting"
@@ -19,12 +18,11 @@ func init() {
 		log.Fatalf("init.setupSetting err: %v", err)
 	}
 	err = setupDBEngine()
-	//err = setupDb()
 	if err != nil {
 		fmt.Println(err)
 		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
-	dao.Readfile()
+
 }
 
 func main() {
@@ -64,12 +62,4 @@ func setupDBEngine() error {
 
 	return nil
 }
-func setupDb() error {
-	var err error
-	global.Db, err = model.NewDb()
-	if err != nil {
-		return err
-	}
 
-	return nil
-}
