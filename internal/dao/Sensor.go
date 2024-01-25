@@ -60,11 +60,9 @@ func DeleteSensor(id int) int {
 	return errmessage.SUCCESS
 }
 
-
-
 // 编辑传感器
 func EditSensor(id int, data *model.Sensor) int {
-	var sensor model.Sensor
+	var sensor = data
 	maps := make(map[string]interface{}) //设备号无法更新
 	if sensor.Longitude != 0 {
 		maps["longitude"] = sensor.Longitude
