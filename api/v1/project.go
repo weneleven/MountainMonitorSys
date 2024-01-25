@@ -1,7 +1,6 @@
 package v1
 
 import (
-	"fmt"
 	"mountain/internal/dao"
 	"mountain/internal/model"
 	errmessage "mountain/pkg/errcode"
@@ -78,39 +77,32 @@ func DeleteProjectAndSensors(c *gin.Context) {
 		"message": errmessage.Geterrmessage(code),
 	})
 }
+//删除项目
+func DeleteProjects(c *gin.Context){
+	id, _ := strconv.Atoi(c.Query("id"))
+	code = dao.DeleteProject(id)
+	c.JSON(http.StatusOK,gin.H{
+		"status":  code,
+		"message": errmessage.Geterrmessage(code),
+	})
+}
 
-// 暂时存在问题
+// 修改项目
 func UpdateProject(c *gin.Context) {
-	//id, _ := strconv.Atoi(c.Param("id"))
-	var temp model.Project
-	_ = c.ShouldBindJSON(&temp)
-	id := temp.ID
-	fmt.Println(id,id)
-	fmt.Println(temp)
-	data, code := dao.GetProjectByID(int(id))
+	id, _ := strconv.Atoi(c.Query("id"))
+	var data model.Project
+	_ = c.ShouldBindJSON(&data)
+	msg, code := myValidator.MyValidate(data)
 	if code != errmessage.SUCCESS {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status":  code,
-			"message": errmessage.Geterrmessage(code),
-		})
-		return
-	}
-	//_ = c.ShouldBindJSON(data)
-	data = &temp
-	msg, IsLegal := myValidator.MyValidate(data)
-	if IsLegal != errmessage.SUCCESS {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"status":  IsLegal,
 			"message": msg,
 		})
 		return
 	}
-	fmt.Println(*data)
-	dao.DeleteProject(int(id))
-	dao.CreateProject(data)
+	dao.UpdateProject(&data,id)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmessage.Geterrmessage(code),
 	})
-
 }
