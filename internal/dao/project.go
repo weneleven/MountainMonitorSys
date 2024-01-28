@@ -29,7 +29,6 @@ func DeleteProject(id int) int {
 	return errmessage.SUCCESS
 }
 
-
 func GetProjects(pageSize int, pageNum int) ([]model.Project, int64) {
 	var projects []model.Project
 	var total int64
@@ -47,26 +46,29 @@ func GetProjectByID(id int) (*model.Project, int) {
 	var project model.Project
 	result := global.DBEngine.Where("id = ?", id).First(&project)
 	if result.Error != nil {
-		return nil, errmessage.ERROR
+		return nil, errmessage.ERROR_PROJECT_NOT_EXIST
 	}
 
 	return &project, errmessage.SUCCESS
 }
-func GetProjectByName(name string) (*model.Project, int){
+func GetProjectByName(name string) (*model.Project, int) {
 	var project model.Project
-	fmt.Println(name)
+	//fmt.Println(name)
 	//result := global.DBEngine.Where("project_name = ?", name).First(&project)
 	// 使用 LIKE 进行模糊查询
-	result := global.DBEngine.Where("project_name LIKE ?", "%" + name + "%").Find(&project)
+	result := global.DBEngine.Where("project_name LIKE ?", "%"+name+"%").Find(&project)
 	if result.Error != nil {
 		fmt.Println(result.Error)
-		return nil, errmessage.ERROR
+		return nil, errmessage.ERROR_PROJECT_NOT_EXIST
+	}
+	//如果项目名称不存在，返回错误码
+	if project.ProjectName == "" {
+		return nil, errmessage.ERROR_PROJECT_NOT_EXIST
 	}
 	return &project, errmessage.SUCCESS
 }
 
-
-func UpdateProject(project *model.Project,id int) int {
+func UpdateProject(project *model.Project, id int) int {
 	result := global.DBEngine.Model(&model.Project{}).Where("id = ?", id).Updates(project)
 	//result := global.DBEngine.Save(project)
 	if result.Error != nil {
