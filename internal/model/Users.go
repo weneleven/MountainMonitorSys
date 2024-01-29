@@ -16,13 +16,4 @@ type User struct {
 	Sex        int    `gorm:"type:int;DEFAULT:1" json:"sex" validate:"required,lte=2,gte=1" label:"性别码"` //1为男性 2为女性
 }
 
-type User1 struct {
-	UserId     int
-	Username   string
-	Password   string
-	Role       int
-	Phone      string
-	Email      string
-	Department string
-	Sex        int
-}
+

@@ -1,7 +1,6 @@
 package model
 
 import (
-	"google.golang.org/protobuf/types/known/timestamppb"
 	"gorm.io/gorm"
 )
 
@@ -20,20 +19,4 @@ type Sensor struct {
 	WarningInterval     int     `gorm:"type:int;DEFAULT:10" json:"warning_interval" validate:"required,gte=1" label:"报警间隔"`     //报警间隔
 	Commit              string  `gorm:"type:varchar(20)" json:"commit" validate:"required,min=0,max=100" label:"备注"`            //备注
 	ProjectID           int     `gorm:"type:int;not null" json:"project_id" validate:"required,gte=1" label:"项目ID"`             //项目ID
-}
-type Sensor1 struct {
-	//采集量
-	Ts timestamppb.Timestamp //时间戳
-	De float64               //东侧测量值
-	Dn float64               //北侧测量值
-	Du float64               //高程测量值
-	//静态标签
-	SensorSN  string  //传感器序列号
-	ProjectID string  //所属项目ID
-	Langitude float64 //经度
-	Latitude  float64 //纬度
-	Altitude  float64 //海拔
-	Interval  float64 //采集间隔
-	Commit    string  //备注
-	Thershold float64 //报警阈值
 }
