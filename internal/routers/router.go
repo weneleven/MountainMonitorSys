@@ -1,13 +1,15 @@
 package routes
 
 import (
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	v1 "mountain/api/v1"
 	"mountain/global"
 	"mountain/internal/middleware"
+	"mountain/internal/websocket"
 	"mountain/pkg/logger"
 	"time"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() {
@@ -51,7 +53,10 @@ func InitRouter() {
 	{
 		public_V1.GET("users", v1.GetUsers)
 		public_V1.POST("login", v1.Login)
+
 	}
+
+	r.GET("/ws/sensor", websocket.SensorHandler)
 
 	r.Run(global.ServerSetting.HttpPort)
 

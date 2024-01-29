@@ -48,3 +48,15 @@ time="2024-01-29 15:33:53" level=info Agent="Mozilla/5.0 (Macintosh; Intel Mac O
 time="2024-01-29 15:34:06" level=info Agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" Hostname=monsys Ip=36.102.107.8 Method=GET datasize=105890 path=/api/v1/data/get spendtime="9 ms" status=200
 time="2024-01-29 15:34:17" level=info Agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" Hostname=monsys Ip=36.102.107.8 Method=GET datasize=105890 path=/api/v1/data/get spendtime="5 ms" status=200
 time="2024-01-29 15:44:04" level=info Agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" Hostname=monsys Ip=36.102.107.8 Method=GET datasize=105890 path=/api/v1/data/get spendtime="82 ms" status=200
+time="2024-01-29 20:49:46" level=warning Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/sensor spendtime="0 ms" status=404
+time="2024-01-29 20:49:58" level=warning Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="0 ms" status=404
+time="2024-01-29 20:50:47" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="5974 ms" status=200
+time="2024-01-29 20:58:55" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="7402 ms" status=200
+time="2024-01-29 20:59:46" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="1004 ms" status=200
+time="2024-01-29 21:03:20" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="7598 ms" status=200
+time="2024-01-29 21:07:37" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="2015 ms" status=200
+time="2024-01-29 21:12:14" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="2017 ms" status=200
+time="2024-01-29 21:24:34" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="2008 ms" status=200
+time="2024-01-29 21:30:18" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="16269 ms" status=200
+time="2024-01-29 21:33:55" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="17538 ms" status=200
+time="2024-01-29 21:39:37" level=info Agent= Hostname=MacBook-Pro.local Ip="::1" Method=GET datasize=0 path=/ws/sensor spendtime="5799 ms" status=200
