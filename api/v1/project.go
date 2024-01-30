@@ -29,7 +29,7 @@ func AddProject(c *gin.Context) {
 	})
 }
 
-// 获取传感器列表
+// 获取项目列表
 func GetProjects(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
@@ -48,12 +48,13 @@ func GetProjects(c *gin.Context) {
 		"total":   total,
 	})
 }
-//通过项目名称获取项目
-func GetProjectByNameHander(c *gin.Context){
+
+// 通过项目名称获取项目
+func GetProjectByNameHander(c *gin.Context) {
 	//获取前端传入参数
 	name := c.Query("name")
-	project , code := dao.GetProjectByName(name)
-	c.JSON(http.StatusOK,gin.H{
+	project, code := dao.GetProjectByName(name)
+	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmessage.Geterrmessage(code),
 		"data":    project,
@@ -77,11 +78,12 @@ func DeleteProjectAndSensors(c *gin.Context) {
 		"message": errmessage.Geterrmessage(code),
 	})
 }
-//删除项目
-func DeleteProjects(c *gin.Context){
+
+// 删除项目
+func DeleteProjects(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Query("id"))
 	code = dao.DeleteProject(id)
-	c.JSON(http.StatusOK,gin.H{
+	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmessage.Geterrmessage(code),
 	})
@@ -100,7 +102,7 @@ func UpdateProject(c *gin.Context) {
 		})
 		return
 	}
-	dao.UpdateProject(&data,id)
+	dao.UpdateProject(&data, id)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmessage.Geterrmessage(code),

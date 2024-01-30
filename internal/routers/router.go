@@ -47,6 +47,8 @@ func InitRouter() {
 		auth_V1.PUT("sensor/:id", v1.EditSensor)
 		//数据处理与展示模块
 		auth_V1.GET("data/get", v1.GetSensorData)
+		//auth_V1.POST("data/add", v1.AddSensorData)
+		auth_V1.GET("data/getBySN", v1.GetSensorDataBySN)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")
