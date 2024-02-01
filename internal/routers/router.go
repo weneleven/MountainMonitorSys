@@ -1,13 +1,15 @@
 package routes
 
 import (
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	v1 "mountain/api/v1"
 	"mountain/global"
 	"mountain/internal/middleware"
+	"mountain/internal/websocket"
 	"mountain/pkg/logger"
 	"time"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() {
@@ -45,13 +47,18 @@ func InitRouter() {
 		auth_V1.PUT("sensor/:id", v1.EditSensor)
 		//数据处理与展示模块
 		auth_V1.GET("data/get", v1.GetSensorData)
+		//auth_V1.POST("data/add", v1.AddSensorData)
+		auth_V1.GET("data/getBySN", v1.GetSensorDataBySN)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")
 	{
 		public_V1.GET("users", v1.GetUsers)
 		public_V1.POST("login", v1.Login)
+
 	}
+
+	r.GET("/ws/sensor", websocket.SensorHandler)
 
 	r.Run(global.ServerSetting.HttpPort)
 

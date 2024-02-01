@@ -51,21 +51,21 @@ func GetProjectByID(id int) (*model.Project, int) {
 
 	return &project, errmessage.SUCCESS
 }
-func GetProjectByName(name string) (*model.Project, int) {
-	var project model.Project
+func GetProjectByName(name string) ([]model.Project, int) {
+	var projects []model.Project
 	//fmt.Println(name)
 	//result := global.DBEngine.Where("project_name = ?", name).First(&project)
 	// 使用 LIKE 进行模糊查询
-	result := global.DBEngine.Where("project_name LIKE ?", "%"+name+"%").Find(&project)
+	result := global.DBEngine.Where("project_name LIKE ?", "%"+name+"%").Find(&projects)
 	if result.Error != nil {
 		fmt.Println(result.Error)
-		return nil, errmessage.ERROR_PROJECT_NOT_EXIST
+		return nil, errmessage.ERROR
 	}
 	//如果项目名称不存在，返回错误码
-	if project.ProjectName == "" {
+	if projects == nil {
 		return nil, errmessage.ERROR_PROJECT_NOT_EXIST
 	}
-	return &project, errmessage.SUCCESS
+	return projects, errmessage.SUCCESS
 }
 
 func UpdateProject(project *model.Project, id int) int {

@@ -5,11 +5,36 @@ import (
 	"fmt"
 	"mountain/global"
 	"mountain/internal/model"
+	errmessage "mountain/pkg/errcode"
 	"os"
 	"strconv"
 	"time"
 )
 
+// 新增传感器数据
+func AddSensorData(data *model.SensorData) int {
+	result := global.DBEngine.Create(data)
+	if result.Error != nil {
+		return errmessage.ERROR
+	}
+	return errmessage.SUCCESS
+}
+
+// 通过设备号获取采集数据
+func GetSensorDataBySensorSN(sn string) ([]model.SensorData, int64, int) {
+	var datas []model.SensorData
+	var total int64
+	result := global.DBEngine.Where("sensor_name = ?", sn).Find(&datas).Count(&total)
+	if result.Error != nil {
+		return nil, 0, errmessage.ERROR_SENSOR_NOT_EXIST
+	}
+	if datas == nil {
+		return nil, 0, errmessage.ERROR_SENSOR_NOT_EXIST
+	}
+	return datas, total, errmessage.SUCCESS
+}
+
+// 获取采集数据
 func GetSensorData() ([]model.SensorData, int64) {
 	var datas []model.SensorData
 	var total int64
@@ -19,7 +44,8 @@ func GetSensorData() ([]model.SensorData, int64) {
 	}
 	return datas, total
 }
-//从文件中批量读取采集数据存入mysql
+
+// 从文件中批量读取采集数据存入mysql
 func Readfile() {
 	// 读取 CSV 文件
 	file, err := os.Open("/mycode/data/data.csv")
@@ -68,6 +94,3 @@ func parseFloat(floatStr string) float64 {
 	f, _ := strconv.ParseFloat(floatStr, 64)
 	return f
 }
-
-
-
