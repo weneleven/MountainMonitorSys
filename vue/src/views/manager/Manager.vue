@@ -58,8 +58,7 @@
       </div>
 
       <div style="flex: 1; width: 0; background-color: #f8f8ff; padding: 10px">
-        <!-- 百度地图容器 -->
-        <div id="baidu-map" style="width: 100%; height: 100vh;"></div>
+        <div id="mapDiv" style="width: 100%; height: 100vh;"></div>
         <router-view />
       </div>
     </div>
@@ -73,68 +72,45 @@ const $route = useRoute()
 console.log($route.path)
 import { onMounted } from 'vue';
 const username = JSON.parse(localStorage.getItem('user') || '{}')
-//地图设置
-const initBaiduMap = () => {
-  // 创建地图实例
-  const map = new BMapGL.Map('baidu-map');
-  // 设置地图中心点，这里以北京为例
-  const point = new BMapGL.Point(116.404, 39.915);
-  map.centerAndZoom(point, 6); // 设置缩放级别
-  // 启用滚轮缩放
-  map.enableScrollWheelZoom(true);
-  map.setMapStyleV2({
-    styleId: '5b94ec7ba18095a1b8db2ed051cd7052'
-  });
-  var cityCtrl = new BMapGL.CityListControl();  // 添加城市列表控件
-  map.addControl(cityCtrl);
-  var point_shanxi = new BMapGL.Point(111.52,36.09);
-  var point_liquan= new BMapGL.Point(108.42,34.48);
-  var point_yunnan= new BMapGL.Point(99.40,23.52);
-  var marker1 = new BMapGL.Marker(point_shanxi);        // 创建标注
-  var marker2 = new BMapGL.Marker(point_liquan);
-  var marker3 = new BMapGL.Marker(point_yunnan);
-  map.addOverlay(marker1);                     // 将标注添加到地图中
-  map.addOverlay(marker2);
-  map.addOverlay(marker3);
+//地图
+var map,control,marker;
+var zoom = 16;
+function onLoad() {
+  //初始化地图对象
+  map = new T.Map("mapDiv");
+  //设置显示地图的中心点和级别
+  map.centerAndZoom(new T.LngLat(110.691386273,35.803706204), zoom);
+  //允许鼠标滚轮缩放地图
+  map.enableScrollWheelZoom();
 
-// 创建信息窗口对象
-  var opts = {
-    width: 250, // 信息窗口宽度
-    height: 150, // 信息窗口高度
-    title: "项目信息", // 信息窗口标题
-  };
-  var infoWindow1 = new BMapGL.InfoWindow(
-      `<p>项目名称：山西临汾古贤皮带机项目</p>`,
-      opts
-  );
-// 监听事件
-  marker1.addEventListener("click", function () {
-    map.openInfoWindow(infoWindow1, point_shanxi);
-  });
-  var infoWindow2 = new BMapGL.InfoWindow(
-      `<p>项目名称：231019东庄水利枢纽工程地灾监测</p>`,
-      opts
-  );
-
-// 监听事件
-  marker2.addEventListener("click", function () {
-    map.openInfoWindow(infoWindow2, point_liquan);
-  });
-  var infoWindow3 = new BMapGL.InfoWindow(
-      `<p>项目名称：230626云南耿马灌区项目安全监测</p>`,
-      opts
-  );
-
-// 监听事件
-  marker3.addEventListener("click", function () {
-    map.openInfoWindow(infoWindow3, point_yunnan);
-  });
-
-};
-
+  var imageURL = "http://t0.tianditu.gov.cn/img_w/wmts?" +
+      "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
+      "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=9011ac4ded509603aed7dbec4fe8906b";
+  //创建自定义图层对象
+  var lay = new T.TileLayer(imageURL, {minZoom: 1, maxZoom: 18});
+  //将图层增加到地图上
+  map.addLayer(lay);
+  control = new T.Control.Zoom();
+  //添加缩放平移控件
+  map.addControl(control);
+  //创建标注对象
+  marker = new T.Marker(new T.LngLat(110.691386273,35.803706204));
+  map.addOverLay(marker);
+  var infoWin1 = new T.InfoWindow();
+  var sContent =
+      "<div style='margin:0px;'>" +
+      "<div style='margin:10px 10px; '>" +
+      "<div style='margin:10px 0px 10px 10px;'>设备SN: 21100200001109 <br>设备名称: JC07 <br>监测类型: GNSS" +
+      "</div>" +
+      "</div>";
+  infoWin1.setContent(sContent);
+  marker.addEventListener("click", function () {
+    marker.openInfoWindow(infoWin1);
+  });// 将标注添加到地图中
+}
 onMounted(() => {
-  // 在组件挂载后初始化百度地图
-  initBaiduMap();
+  // 在组件挂载后初始化地图
+  onLoad()
 });
 
 const logout = () => {

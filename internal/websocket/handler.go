@@ -2,6 +2,7 @@ package websocket
 
 import (
 	"fmt"
+	"mountain/internal/dao"
 	"mountain/internal/model"
 	"net/http"
 
@@ -39,6 +40,6 @@ func SensorHandler(c *gin.Context) {
 		}
 		fmt.Println("***data:***")
 		fmt.Println(data)
-		//dao.AddSensorData(&data) //将数据存入数据库
+		dao.AddSensorData(&data) //将数据存入数据库
 	}
 }
