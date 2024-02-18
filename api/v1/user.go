@@ -30,16 +30,16 @@ func AddUser(c *gin.Context) {
 	code = dao.CheckUserName(data.Username)
 	if code != errmessage.SUCCESS {
 		IsSuccess = false
-		fmt.Println("failed checkusername")
+		//fmt.Println("failed checkusername")
 	}
 	code = dao.CheckUserPhone(data.Phone)
 	if code != errmessage.SUCCESS {
 		IsSuccess = false
-		fmt.Println("failed checkuserphone")
+		//fmt.Println("failed checkuserphone")
 	}
 	if IsSuccess {
 		code = dao.CreatUser(&data)
-		fmt.Println("creatUser")
+		//fmt.Println("creatUser")
 	}
 	fmt.Println(IsSuccess)
 	c.JSON(http.StatusOK, gin.H{
@@ -84,26 +84,6 @@ func EditUsers(c *gin.Context) {
 		return
 	}
 	_ = c.ShouldBindJSON(&data) //ShouldBindWith使用指定的绑定引擎绑定传递的结构指针
-	//如果没有传入某个值则使用原来的值
-	data.Password = OrgUser.Password
-	if data.Username == "" {
-		data.Username = OrgUser.Username
-	}
-	if data.Phone == "" {
-		data.Phone = OrgUser.Phone
-	}
-	if data.Role == 0 {
-		data.Role = OrgUser.Role
-	}
-	if data.Email == "" {
-		data.Email = OrgUser.Email
-	}
-	if data.Department == "" {
-		data.Department = OrgUser.Department
-	}
-	if data.Sex == 0 {
-		data.Sex = OrgUser.Sex
-	}
 	msg, IsLegalCode := myValidator.MyValidate(data)
 	if IsLegalCode != errmessage.SUCCESS {
 		c.JSON(http.StatusOK, gin.H{

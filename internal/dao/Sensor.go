@@ -62,36 +62,8 @@ func DeleteSensor(id int) int {
 
 // 编辑传感器
 func EditSensor(id int, data *model.Sensor) int {
-	var sensor = data
-	maps := make(map[string]interface{}) //设备号无法更新
-	if sensor.Longitude != 0 {
-		maps["longitude"] = sensor.Longitude
-	}
-	if sensor.Latitude != 0 {
-		maps["latitude"] = sensor.Latitude
-	}
-	if sensor.Altitude != 0 {
-		maps["altitude"] = sensor.Altitude
-	}
-	if sensor.Address != "" {
-		maps["address"] = sensor.Address
-	}
-	if sensor.AcquisitionInterval != 0 {
-		maps["acquisition_interval"] = sensor.AcquisitionInterval
-	}
-	if sensor.ArchiveStatus != 0 {
-		maps["archive_status"] = sensor.ArchiveStatus
-	}
-	if sensor.IsWarning != 0 {
-		maps["is_warning"] = sensor.IsWarning
-	}
-	if sensor.WarningInterval != 0 {
-		maps["warning_interval"] = sensor.WarningInterval
-	}
-	if sensor.Commit != "" {
-		maps["commit"] = sensor.Commit
-	}
-	err := global.DBEngine.Model(&sensor).Where("id = ?", id).Updates(sensor).Error
+	//获取数据库中的传感器
+	err := global.DBEngine.Model(&model.Sensor{}).Where("id = ?", id).Updates(data).Error
 	if err != nil {
 		return errmessage.ERROR
 	}

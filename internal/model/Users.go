@@ -14,6 +14,5 @@ type User struct {
 	Email      string `gorm:"type:varchar(30)" json:"email" `
 	Department string `gorm:"type:varchar(20)" json:"department" `
 	Sex        int    `gorm:"type:int;DEFAULT:1" json:"sex" validate:"required,lte=2,gte=1" label:"性别码"` //1为男性 2为女性
+	Token      string `gorm:"type:varchar(50)" json:"token"`
 }
-
-

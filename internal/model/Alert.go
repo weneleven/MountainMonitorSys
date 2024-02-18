@@ -2,7 +2,7 @@ package model
 
 import "google.golang.org/protobuf/types/known/timestamppb"
 
-type alert struct {
+type Alert struct {
 	SensorSN       string                //报警传感器
 	AlertName      string                //报警名称
 	AlertParameter string                //报警字段
