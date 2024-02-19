@@ -6,6 +6,19 @@ import (
 	errmessage "mountain/pkg/errcode"
 )
 
+// 通过传感器号获得预警信息
+func GetAlertBySensorSN(sensorSN string) (model.Alert, int) {
+	var alert model.Alert
+	result := global.DBEngine.Where("sensor_sn = ?", sensorSN).Find(&alert)
+	if result.Error != nil {
+		return alert, errmessage.ERROR
+	}
+	if alert.ID == 0 {
+		return alert, errmessage.ERROR_ALERT_NOT_EXIST
+	}
+	return alert, errmessage.SUCCESS
+}
+
 // 新增预警信息
 func AddAlert(data *model.Alert) int {
 	result := global.DBEngine.Create(data)
