@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +38,11 @@ const router = createRouter({
       name: 'analysis',
       component: () => import('@/views/manager/analysis.vue')
     },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: () => import('@/views/manager/alert.vue')
+    }，
     {
       path: '/test',
       name: 'test',
