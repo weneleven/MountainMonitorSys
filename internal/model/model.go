@@ -31,6 +31,7 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	err = db.AutoMigrate(&Sensor{})
 	err = db.AutoMigrate(&SensorData{})
 	err = db.AutoMigrate(&FileInfo{})
+	err = db.AutoMigrate(&Alert{})
 	if err != nil {
 		return nil, fmt.Errorf("自动迁移失败: %w", err)
 	}

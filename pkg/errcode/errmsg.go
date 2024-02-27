@@ -20,6 +20,9 @@ const (
 	//code=3000..表示传感器模块的错误
 	ERROR_SENSOR_NOT_EXIST = 3001
 	ERROR_SENSORSN_USED    = 3002
+
+	//code=4000..表示预警模块的错误
+	ERROR_ALERT_NOT_EXIST = 4001
 )
 
 var codemsg = map[int]string{
@@ -39,6 +42,9 @@ var codemsg = map[int]string{
 	//code=3000..表示传感器模块的错误
 	ERROR_SENSOR_NOT_EXIST: "传感器不存在",
 	ERROR_SENSORSN_USED:    "传感器序列号已被使用",
+
+	//code=4000..表示预警模块的错误
+	ERROR_ALERT_NOT_EXIST: "预警信息不存在",
 }
 
 func Geterrmessage(code int) string {

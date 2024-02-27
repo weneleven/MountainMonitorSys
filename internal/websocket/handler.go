@@ -2,6 +2,7 @@ package websocket
 
 import (
 	"fmt"
+	"mountain/internal/alert"
 	"mountain/internal/dao"
 	"mountain/internal/model"
 	"net/http"
@@ -40,6 +41,9 @@ func SensorHandler(c *gin.Context) {
 		}
 		fmt.Println("***data:***")
 		fmt.Println(data)
-		dao.AddSensorData(&data) //将数据存入数据库
+		//将数据存入数据库
+		dao.AddSensorData(&data)
+		//检测数据预警
+		alert.CheckSensorData(data, "d4e5428286fe42058c0a03ff450cb790") //这里的token是我自己的token，需要自己申请 具体到每个用户
 	}
 }

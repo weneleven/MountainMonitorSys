@@ -82,27 +82,7 @@ func DeleteUser(id int) int {
 
 // 编辑用户
 func EditUser(id int, data *model.User) int {
-	var user model.User
-	maps := make(map[string]interface{})
-	if data.Username != "" {
-		maps["username"] = data.Username
-	}
-	if data.Role != 0 {
-		maps["role"] = data.Role
-	}
-	if data.Phone != "" {
-		maps["phone"] = data.Phone
-	}
-	if data.Email != "" {
-		maps["email"] = data.Email
-	}
-	if data.Department != "" {
-		maps["department"] = data.Department
-	}
-	if data.Sex != 0 {
-		maps["sex"] = data.Sex
-	}
-	err := global.DBEngine.Model(&user).Where("id=?", id).Updates(maps).Error
+	err := global.DBEngine.Model(&model.User{}).Where("id=?", id).Updates(data).Error
 	if err != nil {
 		return errmessage.ERROR
 	}

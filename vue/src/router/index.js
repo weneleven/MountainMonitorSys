@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +42,11 @@ const router = createRouter({
       path: '/upload',
       name: 'upload',
       component: () => import('@/views/manager/upload.vue')
+    },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: () => import('@/views/manager/alert.vue')
     },
     {
       path: '/test',
