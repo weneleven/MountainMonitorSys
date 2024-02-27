@@ -50,6 +50,14 @@
             <el-icon><DataLine /></el-icon>
             <span>数据分析</span>
           </el-menu-item>
+          <el-menu-item >
+            <el-icon><WarnTriangleFilled /></el-icon>
+            <span>预测预警</span>
+          </el-menu-item>
+          <el-menu-item index="/upload">
+            <el-icon><UploadFilled /></el-icon>
+            <span>模拟数据发送</span>
+          </el-menu-item>
           <el-menu-item index="login" @click="logout">
             <el-icon><SwitchButton /></el-icon>
             <span>退出系统</span>

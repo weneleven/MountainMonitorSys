@@ -39,9 +39,19 @@ const router = createRouter({
       component: () => import('@/views/manager/analysis.vue')
     },
     {
+      path: '/upload',
+      name: 'upload',
+      component: () => import('@/views/manager/upload.vue')
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('@/views/test.vue')
+    },
+    {
+      path: '/analysis1',
+      name: 'analysis1',
+      component: () => import('@/views/manager/analysis1.vue')
     }
   ]
 })

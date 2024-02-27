@@ -78,7 +78,7 @@
                 style="max-width: 560px"
             >
               <el-form-item label="切换项目">
-                <el-select v-model="value"  placeholder="Select" size="large">
+                <el-select v-model="value1"  placeholder="Select" size="large">
                   <el-option
                       v-for="item in options"
                       :key="item.value"
@@ -88,7 +88,7 @@
                 </el-select>
               </el-form-item>
             </el-form>
-<!-- 数据折线图           -->
+            <!-- 数据折线图           -->
             <div id="LC01" style="width: 1000px;height:400px;">
             </div>
             <div id="LC02" style="width: 1000px;height:400px;">
@@ -100,173 +100,99 @@
     </el-container>
   </div>
 </template>
-
-
-
 <script setup>
-import request from "@/utils/request";
 import { reactive, ref, onMounted, computed } from "vue";
-import { ElMessageBox } from "element-plus";
-import { useRoute } from 'vue-router';
 import * as echarts from 'echarts';
-
-
-const $route = useRoute()
-console.log($route.path)
-
-const username = JSON.parse(localStorage.getItem('user') || '{}')
-const token = JSON.parse(localStorage.getItem('token')||'{}')
-
-const logout = () => {
-  window.location.href = '/'; // 重定向到登录页面
-}
 // 项目切换数据
-const value = ref('山西临汾古贤皮带机项目')
+const value1 = ref('山西临汾古贤皮带机项目')
 const options = [
   {
     value:'山西临汾古贤皮带机项目',
     label:'山西临汾古贤皮带机项目',
   },
 ]
-const data = reactive({
-  tableData: ref([])
-})
 onMounted(() => {
-  fetchData(); // 在组件挂载时调用fetchData函数获取数据
-});
-// 从后端获取数据
-const fetchData = async () => {
-  try {
-    const response = await request.get('http://124.70.83.36:3000/api/v1/data/get', {
-      headers: {
-        Authorization: `Bearer ${token}` // 身份令牌
-      },
-    });
-    data.tableData = response.data;
-    // 过滤数据，只获取特定 sensor_name 的数据
-    var target1 = "JC01"
-    var targetSensorName = "JC02";
-    var filteredData1 = data.tableData.filter(item => item.sensor_name === target1);
-    var filteredData = data.tableData.filter(item => item.sensor_name === targetSensorName);
-    //JC01
-    var collectTimes1 = filteredData1.map(item => item.collect_time);
-    var sumXData1 = filteredData1.map(item => item.sum_x);
-    var sumYData1 = filteredData1.map(item => item.sum_y);
-    var sumHData1 = filteredData1.map(item => item.sum_h);
-    const myChart1 = echarts.init(document.getElementById('LC01'));
-    var option1 = {
-      title: {
-        text: "LC01"
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {    //图例组件
-        data:['sum_x','sum_y','sum_h']
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: collectTimes1
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series:  [
-        {
-          name: 'sum_x',
-          type: 'line',
-          stack: '总量',
-          data: sumXData1
-        },
-        {
-          name: 'sum_y',
-          type: 'line',
-          stack: '总量',
-          data: sumYData1
-        },
-        {
-          name: 'sum_h',
-          type: 'line',
-          data: sumHData1
-        }
+  const myChart1 = echarts.init(document.getElementById('LC01'));
+  var option;
+  function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() - 0.5;
+    return {
+      name: now.toString(),
+      value: [
+        [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/') + ' ' +
+        [now.getHours(), now.getMinutes(), now.getSeconds()].join(':'),
+        value.toFixed(1)
       ]
     };
-    //4.使用刚指定的配置项和数据显示图表。
-    myChart1.setOption(option1);
-    //整理数据
-    var collectTimes = filteredData.map(item => item.collect_time);
-    var sumXData = filteredData.map(item => item.sum_x);
-    var sumYData = filteredData.map(item => item.sum_y);
-    var sumHData = filteredData.map(item => item.sum_h);
-    const myChart = echarts.init(document.getElementById('LC02'));
-    var option = {
-      title: {
-        text: "LC02"
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {    //图例组件
-        data:['sum_x','sum_y','sum_h']
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: collectTimes
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series:  [
-        {
-          name: 'sum_x',
-          type: 'line',
-          stack: '总量',
-          data: sumXData
-        },
-        {
-          name: 'sum_y',
-          type: 'line',
-          stack: '总量',
-          data: sumYData
-        },
-        {
-          name: 'sum_h',
-          type: 'line',
-          data: sumHData
-        }
-      ]
-    };
-    //4.使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-  } catch (error) {
-    console.error('Error fetching data:', error);
   }
-};
+  let data = [];
+  let now = new Date(2023, 12, 13);
+  let oneDay = 10 * 1000;
+  let value = Math.random();
+  for (var i = 0; i < 1000; i++) {
+    data.push(randomData());
+  }
+  option = {
+    title: {
+      text: 'LC01'
+    },
+    tooltip: {
+      trigger: 'axis',
+      formatter: function (params) {
+        params = params[0];
+        var date = new Date(params.name);
+        return (
+            date.getDate() +
+            '/' +
+            (date.getMonth() + 1) +
+            '/' +
+            date.getFullYear() +
+            ' : ' +
+            params.value[1]
+        );
+      },
+      axisPointer: {
+        animation: false
+      }
+    },
+    xAxis: {
+      type: 'time',
+      splitLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      boundaryGap: [0, '100%'],
+      splitLine: {
+        show: false
+      }
+    },
+    series: [
+      {
+        name: 'Fake Data',
+        type: 'line',
+        showSymbol: false,
+        data: data
+      }
+    ]
+  };
+  setInterval(function () {
+    for (var i = 0; i < 5; i++) {
+      data.shift();
+      data.push(randomData());
+    }
+    myChart1.setOption({
+      series: [
+        {
+          data: data
+        }
+      ]
+    });
+  }, 1000);
 
-request.get('/').then(res => {
-  console.log(res)
-})
+  option && myChart1.setOption(option);
+});
+
 </script>
-
-<style scoped>
-
-.el-icon-check {
-  color: green;
-}
-
-.el-icon-close {
-  color: red;
-}
-</style>

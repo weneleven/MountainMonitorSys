@@ -49,6 +49,8 @@ func InitRouter() {
 		auth_V1.GET("data/get", v1.GetSensorData)
 		//auth_V1.POST("data/add", v1.AddSensorData)
 		auth_V1.GET("data/getBySN", v1.GetSensorDataBySN)
+		auth_V1.POST("data/upload",v1.UploadFile)
+		auth_V1.GET("data/getfileinfo",v1.GetFileInfo)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")
