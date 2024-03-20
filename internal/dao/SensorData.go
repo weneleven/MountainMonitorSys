@@ -64,15 +64,15 @@ func Readfile() {
 		data := model.SensorData{
 			SensorName:  record[0],
 			CollectTime: parseTime(record[1]),
-			ValueX:      parseFloat(record[2]),
-			ValueY:      parseFloat(record[3]),
-			ValueH:      parseFloat(record[4]),
-			SumX:        parseFloat(record[5]),
-			SumY:        parseFloat(record[6]),
-			SumH:        parseFloat(record[7]),
-			NowX:        parseFloat(record[8]),
-			NowY:        parseFloat(record[9]),
-			NowH:        parseFloat(record[10]),
+			ValueX:      ParseFloat(record[2]),
+			ValueY:      ParseFloat(record[3]),
+			ValueH:      ParseFloat(record[4]),
+			SumX:        ParseFloat(record[5]),
+			SumY:        ParseFloat(record[6]),
+			SumH:        ParseFloat(record[7]),
+			NowX:        ParseFloat(record[8]),
+			NowY:        ParseFloat(record[9]),
+			NowH:        ParseFloat(record[10]),
 		}
 
 		// 插入数据
@@ -84,12 +84,13 @@ func Readfile() {
 
 	fmt.Println("数据插入成功")
 }
+
 func parseTime(timeStr string) time.Time {
 	t, _ := time.Parse("2006-01-02 15:04:05", timeStr)
 	return t
 }
 
-func parseFloat(floatStr string) float64 {
+func ParseFloat(floatStr string) float64 {
 	// 解析浮点数字符串
 	f, _ := strconv.ParseFloat(floatStr, 64)
 	return f

@@ -5,6 +5,7 @@ import (
 	"mountain/internal/alert"
 	"mountain/internal/dao"
 	"mountain/internal/model"
+	"mountain/pkg/rtk"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -42,6 +43,7 @@ func SensorHandler(c *gin.Context) {
 		fmt.Println("***data:***")
 		fmt.Println(data)
 		//将数据存入数据库
+		data, _ = rtk.ParseGNSSData(data)
 		dao.AddSensorData(&data)
 		//检测数据预警
 		alert.CheckSensorData(data, "d4e5428286fe42058c0a03ff450cb790") //这里的token是我自己的token，需要自己申请 具体到每个用户

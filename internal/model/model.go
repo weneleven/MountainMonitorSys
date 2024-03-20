@@ -1,7 +1,6 @@
 package model
 
 import (
-	"database/sql"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -43,13 +42,13 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	return db, nil
 }
 
-// 添加TDengine连接
-func NewDb() (*sql.DB, error) {
-	var taosDSN = "root:taosdata@tcp(124.70.83.36:6030)/mountain"
-	taos, err := sql.Open("taosSql", taosDSN)
-	if err != nil {
-		fmt.Println("failed to connect TDengine, err:", err)
-	}
-	fmt.Println("connected")
-	return taos, nil
-}
+//// 添加TDengine连接
+//func NewDb() (*sql.DB, error) {
+//	var taosDSN = "root:taosdata@tcp(124.70.83.36:6030)/mountain"
+//	taos, err := sql.Open("taosSql", taosDSN)
+//	if err != nil {
+//		fmt.Println("failed to connect TDengine, err:", err)
+//	}
+//	fmt.Println("connected")
+//	return taos, nil
+//}

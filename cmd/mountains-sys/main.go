@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/taosdata/driver-go/v3/taosRestful"
-	_ "github.com/taosdata/driver-go/v3/taosSql"
+	//_ "github.com/taosdata/driver-go/v3/taosRestful"
+	//_ "github.com/taosdata/driver-go/v3/taosSql"
 	"log"
 	"mountain/global"
 	"mountain/internal/model"
@@ -62,4 +62,3 @@ func setupDBEngine() error {
 
 	return nil
 }
-
