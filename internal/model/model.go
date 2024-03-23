@@ -2,10 +2,11 @@ package model
 
 import (
 	"fmt"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 	"mountain/pkg/setting"
 	"time"
+
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
@@ -31,6 +32,7 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	err = db.AutoMigrate(&SensorData{})
 	err = db.AutoMigrate(&FileInfo{})
 	err = db.AutoMigrate(&Alert{})
+	err = db.AutoMigrate(&Warn{})
 	if err != nil {
 		return nil, fmt.Errorf("自动迁移失败: %w", err)
 	}

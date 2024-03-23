@@ -22,7 +22,6 @@ func init() {
 		fmt.Println(err)
 		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
-
 }
 
 func main() {

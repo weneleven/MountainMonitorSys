@@ -50,7 +50,7 @@ const login = () => {
     if (valid) {
       try {
         // 发送登录请求到后端 API
-        const response = await axios.post('http://localhost:3000/api/v1/login', data.form)
+        const response = await axios.post('http://124.70.83.36:3000/api/v1/login', data.form)
 
         // 根据后端返回的状态码处理逻辑
         if (response.data.status === 200) {
@@ -60,7 +60,9 @@ const login = () => {
             type: 'success',
           })
           //存储登录成功后的username到本地，之后使用
-          localStorage.setItem('user', JSON.stringify(response.data.username));
+          localStorage.setItem('user', JSON.stringify(response.data.name));
+          //存储登录成功后的token
+          localStorage.setItem('token',JSON.stringify(response.data.token))
           router.push('/manager')
         } else {
           // 登录失败，给出提示

@@ -49,13 +49,15 @@ func InitRouter() {
 		auth_V1.GET("data/get", v1.GetSensorData)
 		//auth_V1.POST("data/add", v1.AddSensorData)
 		auth_V1.GET("data/getBySN", v1.GetSensorDataBySN)
-		auth_V1.POST("data/upload",v1.UploadFile)
-		auth_V1.GET("data/getfileinfo",v1.GetFileInfo)
+		auth_V1.POST("data/upload", v1.UploadFile)
+		auth_V1.GET("data/getfileinfo", v1.GetFileInfo)
 		//预警模块
 		auth_V1.GET("alert/get", v1.GetAlerts)
 		auth_V1.POST("alert/add", v1.AddAlert)
 		auth_V1.DELETE("alert/:id", v1.DeleteAlert)
 		auth_V1.PUT("alert/:id", v1.EditAlert)
+		auth_V1.GET("warn/get", v1.GetWarn)
+		auth_V1.GET("warn/getBySn", v1.GetWarnBySN)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")
