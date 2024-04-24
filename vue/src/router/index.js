@@ -62,6 +62,26 @@ const router = createRouter({
       path: '/warnview',
       name: 'warnview',
       component: () => import('@/views/manager/warn/warnview.vue')
+    },
+    {
+      path: '/warnanalysis',
+      name: 'warnanalysis',
+      component: () => import('@/views/manager/warn/warnanalysis.vue')
+    },
+    {
+      path: '/infowindow',
+      name: 'infowindow',
+      component: () => import('@/views/manager/map/infowindow.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('@/views/manager/dashboard/index.vue')
+    },
+    {
+      path: '/displaceline',
+      name: 'diplceline',
+      component: () => import('@/views/manager/displacement/LineChart.vue')
     }
   ]
 })

@@ -17,56 +17,86 @@
       </el-header>
       <el-container>
         <el-aside width="200px">
-          <div style="width: 200px; border-right: 1px solid #ddd; min-height: calc(100vh - 60px)">
-            <el-menu
-                router
-                style="border: none"
-                :default-active="$route.path"
-                :default-openeds="['/home', '2']"
-            >
-              <el-menu-item index="/home">
-                <el-icon><HomeFilled /></el-icon>
+          <div style="display: flex" class="menu">
+      <div style="width: 200px; border-right: 1px solid #ddd; min-height: calc(100vh - 60px);">
+            <el-menu router class="menu" style="border: none;" :default-active="$route.path"
+              :default-openeds="['/home', '2']">
+            <el-menu-item index="/home">
+                <el-icon>
+                  <HomeFilled />
+                </el-icon>
                 <span>系统首页</span>
               </el-menu-item>
               <el-sub-menu index="2">
                 <template #title>
-                  <el-icon><MapLocation /></el-icon>
-                  <span>数据视图</span>
+                  <el-icon class="submenu-title">
+                    <MapLocation />
+                  </el-icon>
+                  <span class="submenu-title">数据视图</span>
                 </template>
-                <el-menu-item index="/manager">
+                <el-menu-item index="/infowindow" class="submenu">
                   <span>项目地图</span>
+                </el-menu-item>
+                <el-menu-item index="/manager" class="submenu">
+                  <span>传感器位点</span>
                 </el-menu-item>
               </el-sub-menu>
               <el-menu-item index="/course">
-                <el-icon><Document /></el-icon>
+                <el-icon>
+                  <Document />
+                </el-icon>
                 <span>项目信息</span>
               </el-menu-item>
               <el-menu-item index="/sensor">
-                <el-icon><Tools /></el-icon>
+                <el-icon>
+                  <Tools />
+                </el-icon>
                 <span>传感器信息</span>
               </el-menu-item>
               <el-menu-item index="/dataview">
-                <el-icon><Document /></el-icon>
+                <el-icon>
+                  <Document />
+                </el-icon>
                 <span>数据查看</span>
               </el-menu-item>
               <el-menu-item index="/analysis">
-                <el-icon><DataLine /></el-icon>
+                <el-icon>
+                  <DataLine />
+                </el-icon>
                 <span>数据分析</span>
               </el-menu-item>
-              <el-menu-item >
-                <el-icon><WarnTriangleFilled /></el-icon>
-                <span>预测预警</span>
-              </el-menu-item>
+              <el-sub-menu index="2" :collapse="true">
+                <template #title>
+                  <el-icon class="submenu-title">
+                    <WarnTriangleFilled />
+                  </el-icon>
+                  <span class="submenu-title">预测预警</span>
+                </template>
+                <el-menu-item index="/warnview" class="submenu">
+                  <span>预警信息</span>
+                </el-menu-item>
+                <el-menu-item index="warnanalysis" class="submenu">
+                  <span>预警分析</span>
+                </el-menu-item>
+                <el-menu-item index="/displaceline" class="submenu">
+                  <span>预测</span>
+                </el-menu-item>
+              </el-sub-menu>
               <el-menu-item index="/upload">
-                <el-icon><UploadFilled /></el-icon>
+                <el-icon>
+                  <UploadFilled />
+                </el-icon>
                 <span>模拟数据发送</span>
               </el-menu-item>
               <el-menu-item index="login" @click="logout">
-                <el-icon><SwitchButton /></el-icon>
+                <el-icon>
+                  <SwitchButton />
+                </el-icon>
                 <span>退出系统</span>
               </el-menu-item>
             </el-menu>
           </div>
+        </div>
         </el-aside>
         <el-main>
           <div v-loading.fullscreen.lock="fullscreenLoading">
@@ -256,5 +286,32 @@ const handleCurrentChange = (val) => {
 
 .el-icon-close {
   color: red;
+}
+.el-menu-item.is-active {
+  background-color: #dcede9 !important;
+}
+
+.el-menu-item:hover {
+  color: #11A983;
+}
+
+.el-table th {
+  color: #333;
+}
+.menu {
+  background-color: #2a3852;
+}
+
+.submenu {
+  background-color: #232c45;
+}
+
+.el-menu-item {
+  color: white;
+}
+
+.submenu-title {
+  color: white;
+  /* 设置标题的颜色 */
 }
 </style>

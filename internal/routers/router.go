@@ -58,6 +58,8 @@ func InitRouter() {
 		auth_V1.PUT("alert/:id", v1.EditAlert)
 		auth_V1.GET("warn/get", v1.GetWarn)
 		auth_V1.GET("warn/getBySn", v1.GetWarnBySN)
+		auth_V1.GET("displacement/get", v1.GetDisplace)
+		auth_V1.GET("displacement/getBySn", v1.GetDisplaceBySN)
 	}
 	//公共端口
 	public_V1 := r.Group("/api/v1")

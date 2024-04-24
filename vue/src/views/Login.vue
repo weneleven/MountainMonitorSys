@@ -63,7 +63,7 @@ const login = () => {
           localStorage.setItem('user', JSON.stringify(response.data.name));
           //存储登录成功后的token
           localStorage.setItem('token',JSON.stringify(response.data.token))
-          router.push('/manager')
+          router.push('/infowindow')
         } else {
           // 登录失败，给出提示
           ElMessage.error(response.data.message || 'Login failed');

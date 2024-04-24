@@ -1,0 +1,961 @@
+
+> vue@0.0.0 dev
+> vite --host 0.0.0.0
+
+sh: vite: command not found
+
+> vue@0.0.0 dev
+> vite --host 0.0.0.0
+
+
+  VITE v4.5.0  ready in 399 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.0.135:5173/
+Error:   Failed to scan for dependencies from entries:
+  /code/mountain-sys/vue/index.html
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/code/mountain-sys/vue/src/views/login.vue'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    src/router/index.js:9:30:
+[37m      9 │       component: () => import([32m'@/views/login.vue'[37m)
+        ╵                               [32m~~~~~~~~~~~~~~~~~~~[0m
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1292:20:
+[37m      1292 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44653:19)
+    at handlePlugins (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1292:21)
+    at buildOrContextImpl (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:978:5)
+    at Object.buildOrContext (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:786:5)
+    at /code/mountain-sys/vue/node_modules/esbuild/lib/main.js:2186:68
+    at new Promise (<anonymous>)
+    at Object.context (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:2186:27)
+    at Object.context (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:2026:58)
+    at prepareEsbuildScanner (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44531:26)
+
+
+    at failureErrorWithLog (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1649:15)
+    at /code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1058:25
+    at runOnEndCallbacks (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1484:45)
+    at buildResponseToResult (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1056:7)
+    at /code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1068:9
+    at new Promise (<anonymous>)
+    at requestCallbacks.on-end (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:1067:54)
+    at handleRequest (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:729:19)
+    at handleIncomingPacket (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:755:7)
+    at Socket.readFromStdout (/code/mountain-sys/vue/node_modules/esbuild/lib/main.js:679:7)
+9:08:36 AM [vite] ✨ new dependencies optimized: element-plus/es, element-plus/es/components/base/style/index, element-plus/es/components/menu/style/index, element-plus/es/components/sub-menu/style/index, element-plus/es/components/menu-item/style/index, element-plus/es/components/icon/style/index
+9:08:36 AM [vite] ✨ optimized dependencies changed. reloading
+
+> vue@0.0.0 dev
+> vite --host 0.0.0.0
+
+
+  VITE v4.5.0  ready in 387 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.0.135:5173/
+9:13:50 AM [vite] ✨ new dependencies optimized: element-plus/es/components/form/style/index, element-plus/es/components/button/style/index, element-plus/es/components/form-item/style/index, element-plus/es/components/input/style/index, axios, element-plus/es/components/message/style/index
+9:13:50 AM [vite] ✨ optimized dependencies changed. reloading
+9:14:04 AM [vite] ✨ new dependencies optimized: element-plus/es/components/container/style/index, element-plus/es/components/main/style/index, element-plus/es/components/dialog/style/index, element-plus/es/components/pagination/style/index, element-plus/es/components/table/style/index, element-plus/es/components/popover/style/index, element-plus/es/components/table-column/style/index, element-plus/es/components/aside/style/index, element-plus/es/components/header/style/index, element-plus/es/components/message-box/style/index
+9:14:04 AM [vite] ✨ optimized dependencies changed. reloading
+9:14:20 AM [vite] ✨ new dependencies optimized: element-plus/es/components/select/style/index, element-plus/es/components/option/style/index
+9:14:20 AM [vite] ✨ optimized dependencies changed. reloading
+9:15:37 AM [vite] hmr update /src/views/manager/Manager.vue
+9:15:48 AM [vite] ✨ new dependencies optimized: element-plus/es/components/input-number/style/index, element-plus/es/components/alert/style/index, element-plus/es/components/progress/style/index
+9:15:48 AM [vite] ✨ optimized dependencies changed. reloading
+9:19:51 AM [vite] ✨ new dependencies optimized: element-plus/es/components/switch/style/index, element-plus/es/components/radio-group/style/index, element-plus/es/components/radio/style/index
+9:19:51 AM [vite] ✨ optimized dependencies changed. reloading
+10:11:13 AM [vite] Internal server error: ENOENT: no such file or directory, open '/src/views/login.vue'
+      at Object.openSync (node:fs:590:3)
+      at Object.readFileSync (node:fs:458:35)
+      at getDescriptor (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:114:27)
+      at Context.load (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:2812:28)
+      at Object.load (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44323:64)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:54954:24)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+11:01:42 AM [vite] Internal server error: ENOENT: no such file or directory, open '/src/views/login.vue'
+      at Object.openSync (node:fs:590:3)
+      at Object.readFileSync (node:fs:458:35)
+      at getDescriptor (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:114:27)
+      at Context.load (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:2812:28)
+      at Object.load (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44323:64)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:54954:24)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+3:34:41 PM [vite] page reload src/router/index.js
+3:35:49 PM [vite] hmr update /src/views/manager/Manager.vue
+4:19:38 PM [vite] hmr update /src/views/manager/Manager.vue
+4:20:28 PM [vite] hmr update /src/views/manager/Manager.vue, /src/views/manager/Manager.vue?vue&type=style&index=0&scoped=b5e31638&lang.css
+9:09:45 AM [vite] hmr update /src/views/manager/warn/warnview.vue
+9:21:26 AM [vite] page reload src/router/index.js
+9:35:16 AM [vite] hmr update /src/views/manager/Manager.vue
+9:35:52 AM [vite] hmr update /src/views/manager/warn/warnview.vue
+9:36:33 AM [vite] hmr update /src/views/manager/warn/warnview.vue, /src/views/manager/warn/warnview.vue?vue&type=style&index=0&scoped=5941e62d&lang.css
+9:38:51 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+9:49:09 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+9:56:00 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:06:28 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:07:49 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:12:50 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:14:27 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:14:40 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:16:12 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:16:34 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:17:08 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:17:27 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:26:36 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:30:03 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:31:47 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:34:01 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:34:49 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:35:40 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:35:52 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:36:08 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:11 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:18 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:23 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:28 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:41 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:55 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:37:59 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:38:14 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:38:59 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+10:42:21 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:08:53 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:09:28 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:10:29 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:13:35 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:13:37 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:20:52 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:22:54 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:22:54 AM [vite] Internal server error: [vue/compiler-sfc] Identifier 'handleSelect' has already been declared. (157:6)
+
+/code/mountain-sys/vue/src/views/manager/warn/warnanalysis.vue
+274|  });
+275|  
+276|  const handleSelect = () => {
+   |        ^
+277|    fetchData(); // 更新数据
+278|  };
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/warn/warnanalysis.vue:157:6
+  97 |              <!--所属项目切换-->
+  98 |              <el-form :label-position="left" label-width="120px" style="max-width: 560px">
+  99 |                <el-form-item label="切换项目">
+     |   ^
+  100|                  <el-select v-model="sensor" placeholder="Select" size="large" @change="handleSelect">
+  101|                    <el-option v-for="item in sensors" :key="item.value" :label="item.label" :value="item.value" />
+      at constructor (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:356:19)
+      at Parser.raise (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3223:19)
+      at ScopeHandler.checkRedeclarationInScope (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:1496:19)
+      at ScopeHandler.declareName (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:1467:12)
+      at Parser.declareNameFromIdentifier (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:7484:16)
+      at Parser.checkIdentifier (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:7480:12)
+      at Parser.checkLVal (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:7419:12)
+      at Parser.parseVarId (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13280:10)
+      at Parser.parseVar (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13258:12)
+      at Parser.parseVarStatement (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13100:10)
+11:23:45 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:24:37 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:27:52 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:28:43 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:28:49 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:29:07 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:35:54 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:37:19 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:41:39 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:43:08 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:45:48 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:46:19 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:46:29 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:47:21 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:47:49 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:48:10 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:49:08 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:49:44 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:49:46 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:52:56 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+11:55:48 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:01:06 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:03:48 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:03:50 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:11:02 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:12:06 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:12:23 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:13:13 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:13:33 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+12:13:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+3:59:16 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+3:59:34 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:00:16 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:00:26 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:01:08 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:01:22 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:01:34 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:01:44 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:02:05 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:02:35 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:02:54 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:03:18 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:03:33 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:12:32 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:13:43 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:23:31 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:26:11 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css, /src/views/manager/warn/warnanalysis.vue
+4:26:39 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+4:26:44 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+4:27:37 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:27:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:32:13 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:35:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:36:10 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:36:14 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:36:24 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:37:35 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:37:40 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:37:44 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:37:48 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:38:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:39:56 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:09 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:13 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:19 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:23 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:28 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:33 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:40:51 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:41:21 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:41:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:41:52 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:41:56 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:42:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:51:59 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:52:30 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:52:57 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+4:53:29 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:02:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:05:37 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:11:08 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:13:39 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css, /src/views/manager/warn/warnanalysis.vue
+5:14:23 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:14:23 PM [vite] Internal server error: End tag cannot have attributes.
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/warn/warnanalysis.vue:78:29
+  76 |                    <span>预警分析</span>
+  77 |                  </el-menu-item>
+  78 |                </el-sub-menu class="submenu">
+     |                               ^
+  79 |                <el-menu-item index="/upload">
+  80 |                  <el-icon>
+      at createCompilerError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:18:17)
+      at emitError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1482:5)
+      at parseAttributes (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1184:7)
+      at parseTag (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1063:15)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1029:5)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1008:20)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1008:20)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+5:14:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:15:21 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:15:21 PM [vite] Internal server error: Attribute name cannot contain U+0022 ("), U+0027 ('), and U+003C (<).
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/warn/warnanalysis.vue:66:17
+  64 |                </el-menu-item>
+  65 |                <el-sub-menu index="2" style="background-color: #ddd;"
+  66 |                  <template #title>
+     |                   ^
+  67 |                    <el-icon>
+  68 |                      <WarnTriangleFilled />
+      at createCompilerError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:18:17)
+      at emitError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1482:5)
+      at parseAttribute (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1216:7)
+      at parseAttributes (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1186:18)
+      at parseTag (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1063:15)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:994:19)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1008:20)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1008:20)
+5:15:41 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:17:51 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:18:13 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:18:26 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:18:37 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:18:56 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:19:05 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:20:48 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:21:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:21:51 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:24:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:25:19 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:28:43 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:29:25 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:31:16 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:32:13 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:37:11 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css, /src/views/manager/warn/warnanalysis.vue
+5:37:36 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:37:49 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:38:12 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:38:23 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:38:36 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:39:15 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:40:28 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css, /src/views/manager/warn/warnanalysis.vue
+5:40:49 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:41:17 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:41:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:43:28 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:44:40 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:44:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:44:49 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:44:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:45:04 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:45:08 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:46:50 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css, /src/views/manager/warn/warnanalysis.vue
+5:47:26 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:47:47 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:47:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:48:06 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:49:17 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css, /src/views/manager/warn/warnanalysis.vue
+5:49:33 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:49:47 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:49:57 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:55:17 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:55:26 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:55:33 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:56:05 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:56:13 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:56:16 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:56:22 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:56:24 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:56:27 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+5:57:11 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:57:15 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:57:19 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:57:23 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:57:29 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+5:58:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:11:25 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:20:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:20:51 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:20:56 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue, /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+6:24:10 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:36:05 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:36:53 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:39:19 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:42:11 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:42:11 PM [vite] Internal server error: [vue/compiler-sfc] Unexpected token, expected "," (288:10)
+
+/code/mountain-sys/vue/src/views/manager/warn/warnanalysis.vue
+412|            type: 'bar',
+413|            barWidth: '50%'
+414|            data: angleXy,
+   |            ^
+415|            xAxisIndex: 0,
+416|            yAxisIndex: 0,
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/warn/warnanalysis.vue:288:10
+  212|  });
+  213|  // 从后端获取数据
+  214|  const fetchData = async (sensorValue) => {
+     |                                        ^
+  215|    try {
+  216|      const response = await request.get('http://124.70.83.36:3000/api/v1/warn/get', {
+      at constructor (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:356:19)
+      at Parser.raise (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3223:19)
+      at Parser.unexpected (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3253:16)
+      at Parser.expect (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3585:28)
+      at Parser.parseObjectLike (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:11650:14)
+      at Parser.parseExprAtom (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:11155:23)
+      at Parser.parseExprSubscripts (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:10857:23)
+      at Parser.parseUpdate (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:10840:21)
+      at Parser.parseMaybeUnary (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:10816:23)
+      at Parser.parseMaybeUnaryOrPrivate (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:10654:61)
+6:42:18 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:42:23 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:42:32 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:09 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:16 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:21 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:25 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:39 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:43 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:44:46 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:45:38 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:45:43 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:45:49 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:46:39 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:49:48 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:50:15 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:51:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:52:50 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:53:36 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:54:10 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:56:14 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:56:34 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+7:24:30 PM [vite] hmr update /src/views/manager/warn/warnview.vue
+7:24:54 PM [vite] hmr update /src/views/manager/warn/warnview.vue
+7:47:19 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+7:47:28 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+7:47:45 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+7:47:56 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+7:47:58 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:37:47 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:38:21 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:38:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:40:35 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:42:21 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:42:43 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:43:00 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:43:09 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:43:42 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:44:06 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:44:51 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:45:00 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:45:39 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+8:51:12 PM [vite] hmr update /src/assets/css/global.css
+8:51:15 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+8:52:26 PM [vite] hmr update /src/assets/css/global.css
+8:53:40 PM [vite] hmr update /src/assets/css/global.css
+8:53:52 PM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+8:55:00 PM [vite] hmr update /src/views/manager/warn/warnview.vue?vue&type=style&index=0&scoped=5941e62d&lang.css, /src/views/manager/warn/warnview.vue
+1:39:13 AM [vite] ✨ new dependencies optimized: element-plus/es/components/loading/style/index, element-plus/es/components/upload/style/index
+1:39:13 AM [vite] ✨ optimized dependencies changed. reloading
+1:42:46 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:42:54 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:43:43 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:44:24 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:44:59 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:45:06 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:45:40 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:46:07 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:46:10 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:46:14 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:46:17 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:47:35 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:49:02 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:49:21 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:49:34 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue?vue&type=style&index=0&scoped=3da6db98&lang.css
+1:50:35 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+1:50:50 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:50:44 PM [vite] hmr update /src/views/manager/warn/warnview.vue
+6:51:54 PM [vite] hmr update /src/views/manager/warn/warnview.vue?vue&type=style&index=0&scoped=5941e62d&lang.css
+7:45:37 PM [vite] hmr update /src/views/manager/Manager.vue
+7:46:03 PM [vite] hmr update /src/views/manager/Manager.vue?vue&type=style&index=0&scoped=b5e31638&lang.css
+7:46:47 PM [vite] hmr update /src/views/manager/Manager.vue
+7:48:17 PM [vite] hmr update /src/views/manager/Manager.vue?vue&type=style&index=0&scoped=b5e31638&lang.css, /src/views/manager/Manager.vue
+7:48:40 PM [vite] hmr update /src/views/manager/Manager.vue
+7:48:59 PM [vite] hmr update /src/views/manager/Manager.vue?vue&type=style&index=0&scoped=b5e31638&lang.css, /src/views/manager/Manager.vue
+7:49:51 PM [vite] hmr update /src/views/manager/Manager.vue
+7:52:13 PM [vite] hmr update /src/views/manager/Manager.vue
+5:26:21 PM [vite] page reload index.html
+5:29:12 PM [vite] page reload src/router/index.js
+5:32:06 PM [vite] hmr update /src/views/manager/Manager.vue
+5:32:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:41:45 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:44:09 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:50:44 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:51:05 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:51:49 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:52:47 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:53:41 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:54:09 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:54:32 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:54:47 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:55:32 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:55:41 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:57:49 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:58:29 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+5:58:40 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:10:54 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:13:56 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:14:15 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:14:43 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:14:51 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:19:10 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:20:53 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:21:01 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:22:46 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:23:50 PM [vite] hmr update /src/views/manager/map/infowindow.vue, /src/views/manager/map/infowindow.vue?vue&type=style&index=0&scoped=e2078451&lang.css
+6:24:12 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:24:43 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:24:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:24:57 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:31:04 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:34:16 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:34:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:37:26 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:38:31 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:38:57 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:42:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:44:53 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:49:48 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:50:18 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:55:27 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:56:17 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:58:57 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:02:03 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:05:40 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:06:59 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:07:49 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:08:07 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:08:13 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:08:18 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:08:27 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:16:22 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:18:20 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:19:05 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:19:21 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:19:37 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:20:23 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:20:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:20:59 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:04 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:11 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:20 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:29 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:44 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:48 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:21:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:22:04 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:22:19 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:22:24 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:22:45 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:22:57 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:23:08 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:23:22 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:23:28 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:23:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:23:55 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:05 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:09 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:15 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:21 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:24 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:28 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:40 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:44 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:24:57 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:25:01 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:25:06 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:25:33 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:25:43 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:26:36 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:26:45 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:26:51 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:26:56 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:26:56 PM [vite] Internal server error: [vue/compiler-sfc] Missing semicolon. (56:29)
+
+/code/mountain-sys/vue/src/views/manager/map/infowindow.vue
+157|      div.style.display = 'flex';
+158|      div.style.justifyContent = 'flex-start';
+159|      div.style.alignItems = ''flex-start'';
+   |                               ^
+160|      div.style.flexDirection = 'column';
+161|  
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/map/infowindow.vue:56:29
+  36 |                          </el-menu-item>
+  37 |                          <el-menu-item index="/infowindow" class="submenu">
+  38 |                              <span>项目信息地图</span>
+     |                         ^
+  39 |                          </el-menu-item>
+  40 |                      </el-sub-menu>
+      at constructor (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:356:19)
+      at Parser.raise (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3223:19)
+      at Parser.semicolon (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3580:10)
+      at Parser.parseExpressionStatement (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13158:10)
+      at Parser.parseStatementContent (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:12741:19)
+      at Parser.parseStatementLike (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:12588:17)
+      at Parser.parseStatementListItem (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:12568:17)
+      at Parser.parseBlockOrModuleBlockBody (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13189:61)
+      at Parser.parseBlockBody (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13182:10)
+      at Parser.parseBlock (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13170:10)
+7:27:00 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:27:19 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:27:43 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:28:07 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:28:11 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:29:53 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:11 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:28 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:33 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:39 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:42 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:47 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:30:53 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:31:00 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:31:06 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:31:25 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:13 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:22 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:35 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:41 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:46 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:51 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:54 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:56 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:47:59 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:48:01 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:48:03 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:51:30 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:53:14 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:53:36 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:54:05 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:54:50 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:55:07 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:55:29 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:55:39 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:55:49 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:56:03 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:56:08 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:56:12 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:58:52 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+7:59:40 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:05:02 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:07:43 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:08:20 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:08:58 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:09:11 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:09:32 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:09:50 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:09:53 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:10:02 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:10:08 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:10:16 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:10:28 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:10:35 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:12:54 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:13:06 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:13:09 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:13:15 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:13:30 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:14:11 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:16:25 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:16:42 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:16:45 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:16:55 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:05 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:08 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:12 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:16 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:25 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:28 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:17:55 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:18:08 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:18:15 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:18:37 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:18:51 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:18:53 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+8:18:57 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+9:01:36 PM [vite] page reload src/router/index.js
+9:02:00 PM [vite] ✨ new dependencies optimized: element-plus/es/components/row/style/index, element-plus/es/components/col/style/index
+9:02:00 PM [vite] ✨ optimized dependencies changed. reloading
+9:04:41 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:04:41 PM [vite] Internal server error: Element is missing end tag.
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:2:5
+  1  |  <template>
+  2  |      <div>
+     |       ^
+  3  |          <div
+  4  |            style="height: 60px; background-color:#ffffff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
+      at createCompilerError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:18:17)
+      at emitError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1482:5)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1031:5)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1008:20)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at Object.baseParse (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:773:5)
+      at Object.parse (/code/mountain-sys/vue/node_modules/@vue/compiler-dom/dist/compiler-dom.cjs.js:3025:23)
+      at Object.parse$2 [as parse] (/code/mountain-sys/vue/node_modules/@vue/compiler-sfc/dist/compiler-sfc.cjs.js:1827:24)
+      at createDescriptor (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:86:43)
+9:06:49 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:06:49 PM [vite] Internal server error: Invalid end tag.
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:108:1
+  106|      </div>
+  107|  
+  108|  </div>
+     |   ^
+  109|    </template>
+  110|    
+      at createCompilerError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:18:17)
+      at emitError (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1482:5)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:832:13)
+      at parseElement (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:1008:20)
+      at parseChildren (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:844:18)
+      at Object.baseParse (/code/mountain-sys/vue/node_modules/@vue/compiler-core/dist/compiler-core.cjs.js:773:5)
+      at Object.parse (/code/mountain-sys/vue/node_modules/@vue/compiler-dom/dist/compiler-dom.cjs.js:3025:23)
+      at Object.parse$2 [as parse] (/code/mountain-sys/vue/node_modules/@vue/compiler-sfc/dist/compiler-sfc.cjs.js:1827:24)
+      at createDescriptor (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:86:43)
+      at handleHotUpdate (/code/mountain-sys/vue/node_modules/@vitejs/plugin-vue/dist/index.cjs:2138:26)
+9:09:08 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:10:37 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:11:03 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:11:35 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:14:35 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:17:22 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:17:22 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:17:37 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:20:11 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:20:24 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:21:26 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:22:50 PM [vite] page reload src/views/manager/dashboard/index.vue
+9:25:20 PM [vite] hmr update /src/views/manager/dashboard/components/BarChart.vue
+9:26:19 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:26:23 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:29:18 PM [vite] hmr update /src/views/manager/dashboard/components/BarChart.vue
+9:29:18 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:29:25 PM [vite] Internal server error: Failed to resolve import "./components/BarChart" from "src/views/manager/dashboard/index.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /code/mountain-sys/vue/src/views/manager/dashboard/index.vue:8:25
+  6  |  import { ElIcon as __unplugin_components_0 } from 'element-plus/es';import 'element-plus/es/components/base/style/index';import 'element-plus/es/components/icon/style/index';
+  7  |  
+  8  |    import BarChart from './components/BarChart'
+     |                          ^
+  9  |    const _sfc_main = {
+  10 |      name: 'DashboardAdmin',
+      at formatError (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44062:46)
+      at TransformContext.error (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44058:19)
+      at normalizeUrl (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41844:33)
+      at async file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41998:47
+      at async Promise.all (index 18)
+      at async TransformContext.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:41914:13)
+      at async Object.transform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:44352:30)
+      at async loadAndTransform (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:55026:29)
+      at async viteTransformMiddleware (file:///code/mountain-sys/vue/node_modules/vite/dist/node/chunks/dep-bb8a8339.js:64430:32)
+9:31:41 PM [vite] page reload src/views/manager/dashboard/index.vue
+9:33:52 PM [vite] hmr update /src/views/manager/dashboard/components/BarChart.vue
+9:34:53 PM [vite] hmr update /src/views/manager/dashboard/components/BarChart.vue
+9:36:56 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:37:22 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:37:36 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:37:44 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:37:54 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:38:02 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:38:08 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:38:11 PM [vite] hmr update /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+9:39:02 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+9:40:00 PM [vite] hmr update /src/views/manager/dashboard/components/BarChart.vue
+9:40:40 PM [vite] hmr update /src/views/manager/dashboard/components/BarChart.vue
+9:40:49 PM [vite] ✨ new dependencies optimized: echarts/theme/macarons
+9:40:49 PM [vite] ✨ optimized dependencies changed. reloading
+9:45:53 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+4:16:24 PM [vite] hmr update /src/views/manager/Manager.vue
+4:17:23 PM [vite] hmr update /src/views/Login.vue
+4:19:17 PM [vite] hmr update /src/views/manager/map/infowindow.vue
+4:20:57 PM [vite] hmr update /src/views/manager/dashboard/index.vue
+4:21:32 PM [vite] hmr update /src/views/manager/dashboard/components/LineChart.vue
+4:21:40 PM [vite] hmr update /src/views/manager/dashboard/components/LineChart.vue
+4:42:13 PM [vite] hmr update /src/views/manager/dashboard/index.vue, /src/views/manager/dashboard/index.vue?vue&type=style&index=0&scoped=4d9b545d&lang.css
+5:44:09 PM [vite] page reload src/router/index.js
+5:44:48 PM [vite] hmr update /src/views/manager/Manager.vue
+5:52:29 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+5:54:07 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+5:54:35 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+5:55:19 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+5:59:23 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:00:08 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:01:15 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue, /src/views/manager/displacement/LineChart.vue?vue&type=style&index=0&scoped=5a17f86c&lang.css
+6:01:52 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:01:59 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:03:18 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:03:39 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:04:20 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:04:20 PM [vite] Internal server error: [vue/compiler-sfc] Missing semicolon. (83:13)
+
+/code/mountain-sys/vue/src/views/manager/displacement/LineChart.vue
+205|            },
+206|        },
+207|        tooltip: {
+   |               ^
+208|          trigger: 'axis',
+209|          axisPointer: {
+  Plugin: vite:vue
+  File: /code/mountain-sys/vue/src/views/manager/displacement/LineChart.vue:83:13
+  41 |                </el-sub-menu>
+  42 |                <el-menu-item index="/course">
+  43 |                  <el-icon>
+     |                          ^
+  44 |                    <Document />
+  45 |                  </el-icon>
+      at constructor (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:356:19)
+      at Parser.raise (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3223:19)
+      at Parser.semicolon (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:3580:10)
+      at Parser.parseVarStatement (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13101:10)
+      at Parser.parseStatementContent (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:12683:23)
+      at Parser.parseStatementLike (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:12588:17)
+      at Parser.parseStatementListItem (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:12568:17)
+      at Parser.parseBlockOrModuleBlockBody (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13189:61)
+      at Parser.parseBlockBody (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13182:10)
+      at Parser.parseBlock (/code/mountain-sys/vue/node_modules/@babel/parser/lib/index.js:13170:10)
+6:04:24 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:08:12 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:14:49 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:16:29 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:17:11 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:18:23 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:18:56 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:23:16 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:23:46 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:26:47 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:33:40 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:34:26 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:35:11 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:36:11 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:36:39 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:37:10 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:39:09 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:39:34 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:40:16 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:40:46 PM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:13:14 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:14:00 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:17:02 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:20:04 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:20:44 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:21:49 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:22:37 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:23:19 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:24:39 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:24:52 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:27:24 AM [vite] hmr update /src/views/manager/displacement/LineChart.vue
+6:27:55 AM [vite] hmr update /src/views/manager/map/infowindow.vue
+6:29:05 AM [vite] hmr update /src/views/manager/Course.vue
+6:29:41 AM [vite] hmr update /src/views/manager/Course.vue?vue&type=style&index=0&scoped=af595a82&lang.css
+6:31:21 AM [vite] hmr update /src/views/manager/Course.vue
+6:34:24 AM [vite] hmr update /src/views/manager/dataview.vue?vue&type=style&index=0&scoped=555df0c7&lang.css, /src/views/manager/dataview.vue
+6:34:43 AM [vite] hmr update /src/views/manager/analysis.vue?vue&type=style&index=0&scoped=9201fdb3&lang.css, /src/views/manager/analysis.vue
+6:34:56 AM [vite] hmr update /src/views/manager/upload.vue?vue&type=style&index=0&scope=true&lang.css, /src/views/manager/upload.vue
+6:35:06 AM [vite] hmr update /src/views/manager/sensor.vue?vue&type=style&index=0&scoped=4ac2a0c5&lang.css, /src/views/manager/sensor.vue
+6:36:34 AM [vite] hmr update /src/views/manager/warn/warnanalysis.vue
+6:36:57 AM [vite] hmr update /src/views/manager/warn/warnview.vue
