@@ -2,7 +2,8 @@
   <div class="common-layout">
     <el-container>
       <el-header>
-        <div style="height: 60px; background-color:#ffffff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
+        <div
+          style="height: 60px; background-color:#ffffff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
           <div style="flex: 1">
             <div style="padding-left: 20px; display: flex; align-items: center">
               <img src="@/assets/imgs/newlogo.jpg" alt="" style="width: 40px">
@@ -10,100 +11,103 @@
             </div>
           </div>
           <div style="width: fit-content; padding-right: 10px; display: flex; align-items: center;">
-            <img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="" style="width: 40px; height: 40px">
-            <div style="margin-left: 5px">欢迎您，{{username}}</div>
+            <img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt=""
+              style="width: 40px; height: 40px">
+            <div style="margin-left: 5px">欢迎您，{{ username }}</div>
           </div>
         </div>
       </el-header>
       <el-container>
         <el-aside width="200px">
           <div style="display: flex" class="menu">
-      <div style="width: 200px; border-right: 1px solid #ddd; min-height: calc(100vh - 60px);">
-            <el-menu router class="menu" style="border: none;" :default-active="$route.path"
-              :default-openeds="['/home', '2']">
-            <el-menu-item index="/home">
-                <el-icon>
-                  <HomeFilled />
-                </el-icon>
-                <span>系统首页</span>
-              </el-menu-item>
-              <el-sub-menu index="2">
-                <template #title>
-                  <el-icon class="submenu-title">
-                    <MapLocation />
+            <div style="width: 200px; border-right: 1px solid #ddd; min-height: calc(100vh - 60px);">
+              <el-menu router class="menu" style="border: none;" :default-active="$route.path"
+                :default-openeds="['/home', '2']">
+                <el-menu-item index="/home">
+                  <el-icon>
+                    <HomeFilled />
                   </el-icon>
-                  <span class="submenu-title">数据视图</span>
-                </template>
-                <el-menu-item index="/infowindow" class="submenu">
-                  <span>项目地图</span>
+                  <span>系统首页</span>
                 </el-menu-item>
-                <el-menu-item index="/manager" class="submenu">
-                  <span>传感器位点</span>
-                </el-menu-item>
-              </el-sub-menu>
-              <el-menu-item index="/course">
-                <el-icon>
-                  <Document />
-                </el-icon>
-                <span>项目信息</span>
-              </el-menu-item>
-              <el-menu-item index="/sensor">
-                <el-icon>
-                  <Tools />
-                </el-icon>
-                <span>传感器信息</span>
-              </el-menu-item>
-              <el-menu-item index="/dataview">
-                <el-icon>
-                  <Document />
-                </el-icon>
-                <span>数据查看</span>
-              </el-menu-item>
-              <el-menu-item index="/analysis">
-                <el-icon>
-                  <DataLine />
-                </el-icon>
-                <span>数据分析</span>
-              </el-menu-item>
-              <el-sub-menu index="2" :collapse="true">
-                <template #title>
-                  <el-icon class="submenu-title">
-                    <WarnTriangleFilled />
+                <el-sub-menu index="2">
+                  <template #title>
+                    <el-icon class="submenu-title">
+                      <MapLocation />
+                    </el-icon>
+                    <span class="submenu-title">数据视图</span>
+                  </template>
+                  <el-menu-item index="/infowindow" class="submenu">
+                    <span>项目地图</span>
+                  </el-menu-item>
+                  <el-menu-item index="/manager" class="submenu">
+                    <span>传感器位点</span>
+                  </el-menu-item>
+                </el-sub-menu>
+                <el-menu-item index="/course">
+                  <el-icon>
+                    <Document />
                   </el-icon>
-                  <span class="submenu-title">预测预警</span>
-                </template>
-                <el-menu-item index="/warnview" class="submenu">
-                  <span>预警信息</span>
+                  <span>项目信息</span>
                 </el-menu-item>
-                <el-menu-item index="warnanalysis" class="submenu">
-                  <span>预警分析</span>
+                <el-menu-item index="/sensor">
+                  <el-icon>
+                    <Tools />
+                  </el-icon>
+                  <span>传感器信息</span>
                 </el-menu-item>
-                <el-menu-item index="/displaceline" class="submenu">
-                  <span>预测</span>
+                <el-menu-item index="/dataview">
+                  <el-icon>
+                    <Document />
+                  </el-icon>
+                  <span>数据查看</span>
                 </el-menu-item>
-              </el-sub-menu>
-              <el-menu-item index="/upload">
-                <el-icon>
-                  <UploadFilled />
-                </el-icon>
-                <span>模拟数据发送</span>
-              </el-menu-item>
-              <el-menu-item index="login" @click="logout">
-                <el-icon>
-                  <SwitchButton />
-                </el-icon>
-                <span>退出系统</span>
-              </el-menu-item>
-            </el-menu>
+                <el-menu-item index="/analysis">
+                  <el-icon>
+                    <DataLine />
+                  </el-icon>
+                  <span>数据分析</span>
+                </el-menu-item>
+                <el-sub-menu index="2" :collapse="true">
+                  <template #title>
+                    <el-icon class="submenu-title">
+                      <WarnTriangleFilled />
+                    </el-icon>
+                    <span class="submenu-title">预测预警</span>
+                  </template>
+                  <el-menu-item index="/warnview" class="submenu">
+                    <span>预警信息</span>
+                  </el-menu-item>
+                  <el-menu-item index="warnanalysis" class="submenu">
+                    <span>预警分析</span>
+                  </el-menu-item>
+                  <el-menu-item index="/displaceline" class="submenu">
+                    <span>预测</span>
+                  </el-menu-item>
+                </el-sub-menu>
+                <el-menu-item index="/upload">
+                  <el-icon>
+                    <UploadFilled />
+                  </el-icon>
+                  <span>模拟数据发送</span>
+                </el-menu-item>
+                <el-menu-item index="login" @click="logout">
+                  <el-icon>
+                    <SwitchButton />
+                  </el-icon>
+                  <span>退出系统</span>
+                </el-menu-item>
+              </el-menu>
+            </div>
           </div>
-        </div>
         </el-aside>
         <el-main>
           <div>
             <!-- 搜索部分 -->
-            <div class="card" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <div class="card"
+              style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
               <div>
-                <el-input v-model="searchQuery" style="width: 300px; margin-right: 10px;" placeholder="请输入项目名称"></el-input>
+                <el-input v-model="searchQuery" style="width: 300px; margin-right: 10px;"
+                  placeholder="请输入项目名称"></el-input>
                 <el-button type="primary" @click="search">查询</el-button>
                 <el-button type="info" @click="resetSearch">重置</el-button>
               </div>
@@ -119,23 +123,27 @@
                 <el-table-column label="项目简称" prop="ProjectShortName"></el-table-column>
                 <el-table-column label="项目类型" prop="ProjectType"></el-table-column>
                 <el-table-column label="项目位置" prop="Location"></el-table-column>
-                <el-table-column label="预警启用" align="center">
-                  <template #default="scope">
-                    <el-icon-check v-if="scope.row.AlertsEnabled" class="el-icon-check"></el-icon-check>
-                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
-                  </template>
+                <el-table-column label="预警启用" prop="AlertsEnabled">
+                  <el-icon style="font-size: 30px;"><Check /></el-icon>
+                  <!-- <template #default="scope">
+                    <el-icon-check v-if="scope.row.AlertsEnabled !== '0'" class="el-icon-check"
+                    ></el-icon-check>
+                  </template> -->
                 </el-table-column>
+
                 <el-table-column label="自动推送预警" align="center">
-                  <template #default="scope">
-                    <el-icon-check v-if="scope.row.AutoAlert" class="el-icon-check"></el-icon-check>
+                  <!-- <template #default="scope">
+                    <el-icon-check v-if="scope.row.AutoAlert" class="el-icon-check" ></el-icon-check>
                     <el-icon-close v-else class="el-icon-close"></el-icon-close>
-                  </template>
+                  </template> -->
+                  <el-icon style="font-size: 30px;"><Close /></el-icon>
                 </el-table-column>
                 <el-table-column label="离线推送" align="center">
-                  <template #default="scope">
-                    <el-icon-check v-if="scope.row.OfflinePushEnabled" class="el-icon-check"></el-icon-check>
-                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
-                  </template>
+                  <el-icon style="font-size: 30px;"><Check /></el-icon>
+                  <!-- <template #default="scope">
+                    <el-icon-check class="el-icon-check"></el-icon-check>
+                    <el-icon-close class="el-icon-close"></el-icon-close>
+                  </template> -->
                 </el-table-column>
                 <el-table-column label="离线推送频率(s)" prop="OfflinePushFrequency"></el-table-column>
                 <el-table-column label="地图比例" prop="MapScale"></el-table-column>
@@ -148,101 +156,68 @@
                 <el-table-column label="审核者" prop="ReviewerName"></el-table-column>
                 <el-table-column label="检测单位名称" prop="InspectionUnitName"></el-table-column>
                 <el-table-column label="用户ID" prop="UserID"></el-table-column>
-                <el-table-column label="操作"  min-width="160"
-                                 fixed="right">
+                <el-table-column label="操作" min-width="160" fixed="right">
                   <template #default="scope">
                     <!--            删除操作-->
-                    <el-popover
-                        v-model:visible="scope.row.visible"
-                        placement="top"
-                        width="160"
-                    >
+                    <el-popover v-model:visible="scope.row.visible" placement="top" width="160">
                       <p>确定要删除此项目吗</p>
                       <div style="text-align: right; margin-top: 8px;">
-                        <el-button
-                            type="primary"
-                            link
-                            @click="scope.row.visible = false"
-                        >取消</el-button>
-                        <el-button
-                            type="primary"
-                            @click="deleteProjectFunc(scope.row)"
-                        >确定</el-button>
+                        <el-button type="primary" link @click="scope.row.visible = false">取消</el-button>
+                        <el-button type="primary" @click="deleteProjectFunc(scope.row)">确定</el-button>
                       </div>
                       <template #reference>
-                        <el-button
-                            type="primary"
-                            link
-                            icon="delete"
-                        >删除</el-button>
+                        <el-button type="primary" link icon="delete">删除</el-button>
                       </template>
                     </el-popover>
                     <!--           编辑操作 -->
-                    <el-button
-                        type="primary"
-                        link
-                        icon="edit"
-                        @click="openEdit(scope.row)"
-                    >编辑</el-button>
+                    <el-button type="primary" link icon="edit" @click="openEdit(scope.row)">编辑</el-button>
                   </template>
                 </el-table-column>
               </el-table>
             </div>
 
             <div class="card">
-              <el-pagination
-                  background
-                  layout="prev, pager, next"
-                  :page-size="pageSize"
-                  :current-page.sync="currentPage"
-                  :total="totalItems"
-                  @current-change="handlePageChange"
-              />
+              <el-pagination background layout="prev, pager, next" :page-size="pageSize"
+                :current-page.sync="currentPage" :total="totalItems" @current-change="handlePageChange" />
             </div>
             <!--新增项目选项卡-->
-            <el-dialog
-                v-model="addprojectDialog"
-                title="项目"
-                :show-close="false"
-                :close-on-press-escape="false"
-                :close-on-click-modal="false"
-            >
-              <div style="height:60vh;overflow:auto;padding:0 12px;">
-                <el-form
-                    ref="projectForm"
-                    :rules="rules"
-                    :model="projectInfo"
-                    label-width="80px"
-                >
-                  <el-form-item
-                      label="项目名称"
-                      prop="project_name"
-                  >
+            <el-dialog v-model="addprojectDialog" title="项目" :show-close="false" :close-on-press-escape="false"
+              :close-on-click-modal="false">
+              <div style="overflow:auto;padding:0 12px;">
+                <el-form ref="projectForm" :rules="rules" :model="projectInfo" label-width="150px">
+                  <el-form-item label="项目名称" prop="project_name">
                     <el-input v-model="projectInfo.project_name" />
                   </el-form-item>
-                  <el-form-item
-                      label="项目简称"
-                      prop="project_short_name"
-                  >
-                    <el-input v-model="projectInfo.project_short_name" />
+                  <el-form-item label="项目简称" prop="project_short_name" >
+                    <el-input v-model="projectInfo.project_short_name" type="textarea"/>
                   </el-form-item>
-                  <el-form-item
-                      label="项目类型"
-                      prop="project_type"
-                  >
-                    <el-input v-model="projectInfo.project_type" />
+                  <el-form-item label="项目类型" prop="project_type">
+                    <el-radio-group v-model="projectInfo.project_type">
+                    <el-radio label="边坡" />
+                    <el-radio label="水库" />
+                    <el-radio label="桥梁" />
+                  </el-radio-group>
                   </el-form-item>
-                  <el-form-item
-                      label="项目位置"
-                      prop="location"
-                  >
-                    <el-input v-model="projectInfo.location" />
+                  <el-form-item label="项目位置" prop="location">
+                    <el-input v-model="projectInfo.location" type="textarea" />
                   </el-form-item>
-                  <el-form-item
-                      label="所属单位"
-                      prop="inspection_unit_name"
-                  >
-                    <el-input v-model="projectInfo.inspection_unit_name" />
+                  <el-form-item label="预警启用" prop="alerts_enabled">
+                    <el-switch v-model="projectInfo.alerts_enabled" />
+                  </el-form-item>
+                  <el-form-item label="自动推送预警" prop="auto_alert">
+                    <el-switch v-model="projectInfo.auto_alert" />
+                  </el-form-item>
+                  <el-form-item label="离线推送" prop="offline_push_enabled">
+                    <el-switch v-model="projectInfo.offline_push_enabled" />
+                  </el-form-item>
+                  <el-form-item label="离线推送频率(s)" prop="offline_push_frequency">
+                  <el-input-number v-model="projectInfo.offline_push_frequency" :min="0" :max="86400" />
+                </el-form-item>
+                <el-form-item label="地图比例" prop="map_scale">
+                  <el-input-number v-model="projectInfo.map_scale" :min="0" />
+                </el-form-item>
+                  <el-form-item label="所属单位" prop="inspection_unit_name">
+                    <el-input v-model="projectInfo.inspection_unit_name" type="textarea"/>
                   </el-form-item>
                 </el-form>
               </div>
@@ -250,10 +225,7 @@
               <template #footer>
                 <div class="dialog-footer">
                   <el-button @click="closeAddprojectDialog">取 消</el-button>
-                  <el-button
-                      type="primary"
-                      @click="enterAddProjectDialog()"
-                  >确 定</el-button>
+                  <el-button type="primary" @click="enterAddProjectDialog()">确 定</el-button>
                 </div>
               </template>
             </el-dialog>
@@ -272,7 +244,7 @@
 <script setup>
 import request from "@/utils/request";
 import { reactive, ref, onMounted, computed } from "vue";
-import {ElMessage, ElMessageBox} from "element-plus";
+import { ElMessage, ElMessageBox } from "element-plus";
 import { useRoute } from 'vue-router';
 import axios from "axios";
 
@@ -281,7 +253,7 @@ console.log($route.path)
 
 
 const username = JSON.parse(localStorage.getItem('user') || '{}')
-const token = JSON.parse(localStorage.getItem('token')||'{}')
+const token = JSON.parse(localStorage.getItem('token') || '{}')
 
 const logout = () => {
   window.location.href = '/'; // 重定向到登录页面
@@ -292,7 +264,12 @@ const projectInfo = ref({
   project_short_name: '',
   project_type: '',
   location: '',
-  inspection_unit_name:'',
+  inspection_unit_name: '',
+  alerts_enabled: '',
+  offline_push_frequency:'',
+  alerts_enabled:'',
+  auto_alert:'',
+  offline_push_enabled:'',
 })
 const id = ref()
 const rules = ref({
@@ -310,22 +287,23 @@ const rules = ref({
 })
 const projectForm = ref(null)
 const addprojectDialog = ref(false)
-const enterAddProjectDialog = async() => {
-  if(dialogFlag.value === 'add'){
-  try {
-    const response = await axios.post('http://124.70.83.36:3000/api/v1/project/add', projectInfo.value, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-    });
-    console.log('项目添加成功:', response.data);
-    ElMessage({ type: 'success', message: '创建成功' })
-    closeAddprojectDialog()
-    fetchData()
-  } catch (error) {
-    console.error('项目添加失败:', error);
-  }}
-  if(dialogFlag.value === 'edit'){
+const enterAddProjectDialog = async () => {
+  if (dialogFlag.value === 'add') {
+    try {
+      const response = await axios.post('http://124.70.83.36:3000/api/v1/project/add', projectInfo.value, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      });
+      console.log('项目添加成功:', response.data);
+      ElMessage({ type: 'success', message: '创建成功' })
+      closeAddprojectDialog()
+      fetchData()
+    } catch (error) {
+      console.error('项目添加失败:', error);
+    }
+  }
+  if (dialogFlag.value === 'edit') {
     try {
       const response = await axios.put(`http://124.70.83.36:3000/api/v1/project/updateProject?id=${id.value}`, projectInfo.value, {
         headers: {
@@ -402,17 +380,20 @@ const fetchData = async () => {
         Authorization: `Bearer ${token}` // 身份令牌
       },
     });
-  //  data.tableData = response.data;
+    //  data.tableData = response.data;
     // 映射后端返回的字段名到前端表单项的字段名
     const mappedData = response.data.map(item => ({
-      ID:item.ID,
+      ID: item.ID,
       ProjectName: item.project_name,
-      ProjectShortName:item.project_short_name,
-      ProjectType:item.project_type,
-      MapScale:item.map_scale,
-      Location:item.location,
-      OfflinePushFrequency:item.offline_push_frequency,
-      InspectionUnitName:item.inspection_unit_name,
+      ProjectShortName: item.project_short_name,
+      ProjectType: item.project_type,
+      MapScale: item.map_scale,
+      Location: item.location,
+      OfflinePushFrequency: item.offline_push_frequency,
+      InspectionUnitName: item.inspection_unit_name,
+      AlertsEnabled: item.alerts_enabled,
+      AutoAlert: item.auto_alert,
+      OfflinePushEnabled: item.offline_push_enabled,
       // 其他映射项...
     }));
     data.tableData = mappedData;
@@ -430,19 +411,25 @@ const search = async () => {
         Authorization: `Bearer ${token}` // 身份令牌
       },
     });
+    console.log('response----')
+    console.log(response)
     //返回值检查
     if (response.data) {
+      console.log('-------------')
+      console.log(response.data[0].ID)
       // 提取数据并赋值给 tableData
       data.tableData = [{
-        ID:response.data.ID,
-        ProjectName: response.data.project_name,
-        ProjectShortName: response.data.project_short_name,
-        ProjectType: response.data.project_type,
-        MapScale: response.data.map_scale,
-        Location: response.data.location,
-        OfflinePushFrequency: response.data.offline_push_frequency,
-        InspectionUnitName: response.data.inspection_unit_name,
+        ID: response.data[0].ID,
+        ProjectName: response.data[0].project_name,
+        ProjectShortName: response.data[0].project_short_name,
+        ProjectType: response.data[0].project_type,
+        MapScale: response.data[0].map_scale,
+        Location: response.data[0].location,
+        OfflinePushFrequency: response.data[0].offline_push_frequency,
+        InspectionUnitName: response.data[0].inspection_unit_name,
       }];
+      console.log("--------tabledata")
+      console.log(data.tableData)
     } else {
       data.tableData = ref([])
       console.log(data.tableData)
@@ -498,13 +485,14 @@ const resetEditForm = () => {
 </script>
 
 <style scoped>
-
 .el-icon-check {
   color: green;
+  font-size: 20px; 
 }
 
 .el-icon-close {
   color: red;
+  font-size: 200px; 
 }
 
 .el-menu-item.is-active {
@@ -518,6 +506,7 @@ const resetEditForm = () => {
 .el-table th {
   color: #333;
 }
+
 .menu {
   background-color: #2a3852;
 }

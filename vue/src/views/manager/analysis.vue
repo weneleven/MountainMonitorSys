@@ -186,7 +186,7 @@ const fetchData = async () => {
     const myChart1 = echarts.init(document.getElementById('LC01'));
     var option1 = {
       title: {
-        text: "LC01"
+        text: "JC01"
       },
       tooltip: {
         trigger: 'axis'
@@ -237,7 +237,7 @@ const fetchData = async () => {
     const myChart = echarts.init(document.getElementById('LC02'));
     var option = {
       title: {
-        text: "LC02"
+        text: "JC02"
       },
       tooltip: {
         trigger: 'axis'

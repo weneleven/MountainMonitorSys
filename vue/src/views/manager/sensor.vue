@@ -125,29 +125,11 @@
                 <el-table-column label="设备名称" prop="sensor_name"></el-table-column>
                 <el-table-column label="经度" prop="longitude"></el-table-column>
                 <el-table-column label="纬度" prop="latitude"></el-table-column>
-                <el-table-column label="地址" prop="address"></el-table-column>
-                <el-table-column label="预警启用" align="center">
-                  <template #default="scope">
-                    <el-icon-check v-if="scope.row.AlertsEnabled" class="el-icon-check"></el-icon-check>
-                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
-                  </template>
-                </el-table-column>
-                <el-table-column label="自动推送预警" align="center">
-                  <template #default="scope">
-                    <el-icon-check v-if="scope.row.AutoAlert" class="el-icon-check"></el-icon-check>
-                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
-                  </template>
-                </el-table-column>
-                <el-table-column label="离线推送" align="center">
-                  <template #default="scope">
-                    <el-icon-check v-if="scope.row.OfflinePushEnabled" class="el-icon-check"></el-icon-check>
-                    <el-icon-close v-else class="el-icon-close"></el-icon-close>
-                  </template>
-                </el-table-column>
-                <el-table-column label="采集间隔" prop="acquisition_interval"></el-table-column>
-                <el-table-column label="归档状态" prop="archive_status"></el-table-column>
-                <el-table-column label="是否报警" prop="is_warning"></el-table-column>
-                <el-table-column label="报警间隔" prop="warning_interval"></el-table-column>
+                <el-table-column label="所属项目" prop="project"></el-table-column>
+                <el-table-column label="监测类型" prop="type"></el-table-column>
+                <el-table-column label="采集间隔" prop="interval"></el-table-column>
+                <el-table-column label="是否数据预警" prop="iswarn"></el-table-column>
+                <el-table-column label="是否推送预警" prop="ispush"></el-table-column>
                 <el-table-column label="备注" prop="commit"></el-table-column>
                 <el-table-column label="操作" align="center" width="160">
                   <template v-slot="scope">
@@ -170,60 +152,23 @@
 
             <el-dialog title="修改数据" width="40%" v-model="data.formVisible" :close-on-click-modal="false" destroy-on-close>
               <el-form ref="formRef" :model="data.form" label-width="150px">
-                <el-form-item label="项目ID" prop="ID"  required>
-                  <el-input v-model="data.form.ID" />
-                </el-form-item>
-
-                <el-form-item label="项目名称" prop="ProjectName"  >
+                <el-form-item label="设备名称" prop="ProjectName"  >
                   <el-input v-model="data.form.ProjectName" />
                 </el-form-item>
-
-                <el-form-item label="项目简称" prop="ProjectShortName">
-                  <el-input v-model="data.form.ProjectShortName" type="textarea" />
-                </el-form-item>
-
-                <el-form-item label="项目类型" prop="projectType">
+                <el-form-item label="类型" prop="projectType">
                   <el-radio-group v-model="data.form.ProjectType">
-                    <el-radio label="边坡" />
-                    <el-radio label="水库" />
-                    <el-radio label="桥梁" />
+                    <el-radio label="GNSS" />
                   </el-radio-group>
                 </el-form-item>
-
-                <el-form-item label="项目位置" prop="Location">
+                <el-form-item label="所属项目" prop="Location">
                   <el-input v-model="data.form.Location" type="textarea" />
                 </el-form-item>
-
-                <el-form-item label="自动推送预警" prop="AutoAlert">
-                  <el-switch v-model="data.form.AutoAlert" />
-                </el-form-item>
-
-                <el-form-item label="预警启用" prop="AlertsEnabled">
+                <el-form-item label="是否预警启用" prop="AlertsEnabled">
                   <el-switch v-model="data.form.AlertsEnabled" />
                 </el-form-item>
-
-                <el-form-item label="离线推送" prop="OfflinePushEnabled">
-                  <el-switch v-model="data.form.OfflinePushEnabled" />
+                <el-form-item label="是否推送预警" prop="AutoAlert">
+                  <el-switch v-model="data.form.AutoAlert" />
                 </el-form-item>
-
-
-                <el-form-item label="离线推送频率(s)" prop="offlineFrequency">
-                  <el-input-number v-model="data.form.OfflinePushFrequency" :min="0" :max="86400" />
-                </el-form-item>
-
-
-                <el-form-item label="地图比例" prop="mapScale">
-                  <el-input-number v-model="data.form.MapScale" :min="0" />
-                </el-form-item>
-
-                <el-form-item label="短信签名" prop="smsSignature">
-                  <el-input v-model="data.form.SmsSignature" />
-                </el-form-item>
-
-                <el-form-item label="项目简介" prop="ProjectDescription">
-                  <el-input v-model="data.form.ProjectDescription" type="textarea" />
-                </el-form-item>
-
                 <el-form-item label="备注" prop="Remark">
                   <el-input v-model="data.form.Remark" type="textarea" />
                 </el-form-item>
@@ -275,7 +220,7 @@ const options = [
 // 示例数据
 const totalItems = ref(100); // 可根据后端接口修改，使总数据数由后端提供
 const currentPage = ref(1);
-const pageSize = ref(2);
+const pageSize = ref(8);
 const searchQuery = ref('');
 
 
@@ -292,68 +237,19 @@ onMounted(() => {
 // 从后端获取数据
 const fetchData = async () => {
   try {
-    const response = await request.get('http://124.70.83.36:3000/api/v1/projects', {
+    const response = await request.get('http://124.70.83.36:3000/api/v1/sensors', {
       headers: {
         Authorization: `Bearer ${token}` // 身份令牌
       },
     });
-    //  data.tableData = response.data;
-    // 映射后端返回的字段名到前端表单项的字段名
-    const mappedData = response.data.map(item => ({
-      ID:item.ID,
-      ProjectName: item.project_name,
-      ProjectShortName:item.project_short_name,
-      ProjectType:item.project_type,
-      MapScale:item.map_scale,
-      Location:item.location,
-      OfflinePushFrequency:item.offline_push_frequency,
-      InspectionUnitName:item.inspection_unit_name,
-      // 其他映射项...
-    }));
-    data.tableData = mappedData;
+    data.tableData = response.data;
+    console.log(data.tableData)
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 };
 
-// 根据名称获取项目
-const search = async () => {
-  try {
-    const response = await request.get('http://124.70.83.36:3000/api/v1/project/getByName', {
-      params: { name: searchQuery.value },
-      headers: {
-        Authorization: `Bearer ${token}` // 身份令牌
-      },
-    });
-    //返回值检查
-    if (response.data) {
-      // 提取数据并赋值给 tableData
-      data.tableData = [{
-        ID:response.data.ID,
-        ProjectName: response.data.project_name,
-        ProjectShortName: response.data.project_short_name,
-        ProjectType: response.data.project_type,
-        MapScale: response.data.map_scale,
-        Location: response.data.location,
-        OfflinePushFrequency: response.data.offline_push_frequency,
-        InspectionUnitName: response.data.inspection_unit_name,
-      }];
-    } else {
-      data.tableData = ref([])
-      console.log(data.tableData)
-      console.error('Error searching: Response data is null or undefined.');
-    }
 
-  } catch (error) {
-    console.error('Error searching:', error);
-  }
-};
-
-// 重置搜索
-const resetSearch = () => {
-  searchQuery.value = '';
-  fetchData(); // 重置后重新获取数据
-};
 
 // 计算当前页的数据
 const pagedTableData = computed(() => {

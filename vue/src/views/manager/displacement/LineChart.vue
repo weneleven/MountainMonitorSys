@@ -156,23 +156,23 @@ const sensor = ref('6079')
 const sensors = [
   {
     value: '6079',
-    label: '6079',
+    label: 'JC01',
   },
   {
     value: '6080',
-    label: '6080'
+    label: 'JC02'
   },
   {
     value: '6081',
-    label: '6081'
+    label: 'JC03'
   },
   {
     value: '6082',
-    label: '6082'
+    label: 'JC04'
   },
   {
     value: '6083',
-    label: '6083'
+    label: 'JC05'
   },
 ]
 const data = reactive({
@@ -181,7 +181,7 @@ const data = reactive({
 const handleSelect = () => {
   fetchData(sensor.value)
   ElMessage({
-    message: sensor.value,
+    message: 'success',
     type: 'success',
   })
 }
@@ -202,20 +202,25 @@ const fetchData = async (sensorValue) => {
     var nd = filteredData1.map(item => item.nd);
     var ed = filteredData1.map(item => item.ed);
     var hd = filteredData1.map(item => item.hd);
+    var len = nd.length;
+    //预测未来30天
+    var start = len-30;
+    var end = len-1;
     //效果总览
     const myChart = echarts.init(document.getElementById('line'));
     var option = {
       title: {
-        text: sensorValue + "：位移图",
+        text: "位移预测图",
+        // text: sensorValue + "：位移图",
         left: 'center',
       },
       grid: {
-            left: 10,
-            right: 10,
-            bottom: 20,
-            top: 30,
-            containLabel: true
-          },
+        left: 10,
+        right: 10,
+        bottom: 20,
+        top: 30,
+        containLabel: true
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -235,6 +240,19 @@ const fetchData = async (sensorValue) => {
       },
       yAxis: {
         type: 'value'
+      },
+      visualMap: {
+        type: 'piecewise',
+        show: false,
+        dimension: 0,
+        seriesIndex: 0,
+        pieces: [
+          {
+            gt: start,
+            lt: end,
+            color: 'rgba(190, 184, 220, 0.4)'
+          },
+        ]
       },
       series: [
         {
@@ -292,7 +310,26 @@ const fetchData = async (sensorValue) => {
                 color: '#f3f8ff'
               }
             },
-            
+
+          },
+          markLine: {
+            symbol: ['none', 'none'],
+            data: [
+              {
+                xAxis: start,
+                label: {
+                  show: true,
+                  position: 'end',
+                  formatter: function (params) {
+                    return 'forecast';
+                  }
+                }
+              },
+              {
+                xAxis: end,
+                label: { show: false }
+              }
+            ]
           },
           animationDuration: 2800,
           animationEasing: 'quadraticOut'
@@ -304,16 +341,17 @@ const fetchData = async (sensorValue) => {
     const myChart1 = echarts.init(document.getElementById('line1'));
     var option1 = {
       title: {
-        text: sensorValue + "：北方向位移图",
+        text: "北方向位移图",
+        // text: sensorValue + "：北方向位移图",
         left: 'center',
       },
       grid: {
-            left: 10,
-            right: 10,
-            bottom: 20,
-            top: 30,
-            containLabel: true
-          },
+        left: 10,
+        right: 10,
+        bottom: 20,
+        top: 30,
+        containLabel: true
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -335,31 +373,46 @@ const fetchData = async (sensorValue) => {
         type: 'value'
       },
       visualMap: {
-    type: 'piecewise',
-    show: false,
-    dimension: 0,
-    seriesIndex: 0,
-    pieces: [
-      {
-        gt: 290,
-        lt: 306,
-        color: 'rgba(190, 184, 220, 0.4)'
+        type: 'piecewise',
+        show: false,
+        dimension: 0,
+        seriesIndex: 0,
+        pieces: [
+          {
+            gt: start,
+            lt: end,
+            color: 'rgba(190, 184, 220, 0.4)'
+          },
+        ]
       },
-    ]
-  },
       series: [
         {
           name: '北方向位移',
           lineStyle: {
-        color: '#BE88DC',
-        width: 5
-      },
-      markLine: {
-        symbol: ['none', 'none'],
-        label: { show: false },
-        data: [{ xAxis: 290 }, { xAxis: 306 }]
-      },
-      areaStyle: {},
+            color: '#BE88DC',
+            width: 5
+          },
+          markLine: {
+            symbol: ['none', 'none'],
+            data: [
+              {
+                xAxis: start,
+                label: {
+                  show: true,
+                  position: 'end',
+                  formatter: function (params) {
+                    return 'forecast';
+                  }
+                }
+              },
+              {
+                xAxis: end,
+                label: { show: false }
+              }
+            ]
+          },
+          areaStyle: {
+          },
           type: 'line',
           stack: '总量',
           data: nd,
@@ -374,16 +427,17 @@ const fetchData = async (sensorValue) => {
     const myChart2 = echarts.init(document.getElementById('line2'));
     var option2 = {
       title: {
-        text: sensorValue + "：东方向位移图",
+        text: "东方向位移图",
+        // text: sensorValue + "：东方向位移图",
         left: 'center',
       },
       grid: {
-            left: 10,
-            right: 10,
-            bottom: 20,
-            top: 30,
-            containLabel: true
-          },
+        left: 10,
+        right: 10,
+        bottom: 20,
+        top: 30,
+        containLabel: true
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -405,31 +459,45 @@ const fetchData = async (sensorValue) => {
         type: 'value'
       },
       visualMap: {
-    type: 'piecewise',
-    show: false,
-    dimension: 0,
-    seriesIndex: 0,
-    pieces: [
-      {
-        gt: 290,
-        lt: 306,
-        color: 'rgba(250, 127, 111, 0.4)'
+        type: 'piecewise',
+        show: false,
+        dimension: 0,
+        seriesIndex: 0,
+        pieces: [
+          {
+            gt: start,
+            lt: end,
+            color: 'rgba(250, 127, 111, 0.4)'
+          },
+        ]
       },
-    ]
-  },
       series: [
         {
           name: '东方向位移',
           lineStyle: {
-        color: '#FFBE7A',
-        width: 5
-      },
-      markLine: {
-        symbol: ['none', 'none'],
-        label: { show: false },
-        data: [{ xAxis: 290 }, { xAxis: 306 }]
-      },
-      areaStyle: {},
+            color: '#FFBE7A',
+            width: 5
+          },
+          markLine: {
+            symbol: ['none', 'none'],
+            data: [
+              {
+                xAxis: start,
+                label: {
+                  show: true,
+                  position: 'end',
+                  formatter: function (params) {
+                    return 'forecast';
+                  }
+                }
+              },
+              {
+                xAxis: end,
+                label: { show: false }
+              }
+            ]
+          },
+          areaStyle: {},
           type: 'line',
           stack: '总量',
           data: ed,
@@ -444,16 +512,17 @@ const fetchData = async (sensorValue) => {
     const myChart3 = echarts.init(document.getElementById('line3'));
     var option3 = {
       title: {
-        text: sensorValue + "：垂直方向位移图",
+        text: "垂直方向位移图",
+        // text: sensorValue + "：垂直方向位移图",
         left: 'center',
       },
       grid: {
-            left: 10,
-            right: 10,
-            bottom: 20,
-            top: 30,
-            containLabel: true
-          },
+        left: 10,
+        right: 10,
+        bottom: 20,
+        top: 30,
+        containLabel: true
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -475,31 +544,45 @@ const fetchData = async (sensorValue) => {
         type: 'value'
       },
       visualMap: {
-    type: 'piecewise',
-    show: false,
-    dimension: 0,
-    seriesIndex: 0,
-    pieces: [
-      {
-        gt: 290,
-        lt: 306,
-        color: 'rgba(142, 207, 201, 0.4)'
+        type: 'piecewise',
+        show: false,
+        dimension: 0,
+        seriesIndex: 0,
+        pieces: [
+          {
+            gt: start,
+            lt: end,
+            color: 'rgba(142, 207, 201, 0.4)'
+          },
+        ]
       },
-    ]
-  },
       series: [
         {
           name: '垂直方向位移',
           lineStyle: {
-        color: '#8ECFC9',
-        width: 5
-      },
-      markLine: {
-        symbol: ['none', 'none'],
-        label: { show: false },
-        data: [{ xAxis: 290 }, { xAxis: 306 }]
-      },
-      areaStyle: {},
+            color: '#8ECFC9',
+            width: 5
+          },
+          markLine: {
+            symbol: ['none', 'none'],
+            data: [
+              {
+                xAxis: start,
+                label: {
+                  show: true,
+                  position: 'end',
+                  formatter: function (params) {
+                    return 'forecast';
+                  }
+                }
+              },
+              {
+                xAxis: end,
+                label: { show: false }
+              }
+            ]
+          },
+          areaStyle: {},
           type: 'line',
           stack: '总量',
           data: hd,

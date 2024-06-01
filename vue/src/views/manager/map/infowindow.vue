@@ -132,7 +132,7 @@ function onLoad() {
         offsetY: -60,
         properties: {
             title: '项目总览',
-            text: ['项目名称: 230505黄藏寺左岸BXT5变形监测','项目地址：祁连县八宝镇','项目联系人：王宏飞 15890198888'],
+            text: ['项目名称: 230505黄藏寺左岸BXT5变形监测','项目地址：祁连县八宝镇','项目联系人：XXX 1589019XXXX'],
             imgSrc: 'https://bj.bcebos.com/v1/mapopen-pub-jsapigl/assets/images/gugong.png'
         }
     });

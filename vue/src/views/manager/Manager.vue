@@ -109,15 +109,36 @@ import { useRoute } from 'vue-router'
 const $route = useRoute()
 console.log($route.path)
 import { onMounted } from 'vue';
+import axios from 'axios';
+import { reactive, ref } from "vue";
+import request from "@/utils/request";
 const username = JSON.parse(localStorage.getItem('user') || '{}')
+const token = JSON.parse(localStorage.getItem('token') || '{}')
 //地图
-var map, control, marker;
-var zoom = 16;
+var map, control;
+var zoom = 17;
+const data = reactive({
+  tableData: ref([])
+})
+// 从后端获取数据
+const fetchData = async () => {
+  try {
+    const response = await request.get('http://124.70.83.36:3000/api/v1/displacement/get', {
+      headers: {
+        Authorization: `Bearer ${token}` // 身份令牌
+      },
+    });
+    data.tableData = response.data;
+    console.log('传感器数据：', data.tableData);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
 function onLoad() {
   //初始化地图对象
   map = new T.Map("mapDiv");
   //设置显示地图的中心点和级别
-  map.centerAndZoom(new T.LngLat(110.691386273, 35.803706204), zoom);
+  map.centerAndZoom(new T.LngLat(100.16090556,38.316356), zoom);
   //允许鼠标滚轮缩放地图
   map.enableScrollWheelZoom();
 
@@ -131,25 +152,92 @@ function onLoad() {
   control = new T.Control.Zoom();
   //添加缩放平移控件
   map.addControl(control);
-  //创建标注对象
-  marker = new T.Marker(new T.LngLat(110.691386273, 35.803706204));
+  // console.log('1111：', data.tableData);
+  var filteredData79 = data.tableData.filter(item => item.sensor_name === '6079');
+  var filteredData80 = data.tableData.filter(item => item.sensor_name === '6080');
+  var filteredData81 = data.tableData.filter(item => item.sensor_name === '6081');
+  var filteredData82 = data.tableData.filter(item => item.sensor_name === '6082');
+  var filteredData83 = data.tableData.filter(item => item.sensor_name === '6083');
+  // console.log('79：', filteredData79);
+  var len = filteredData79.length-30
+  var date = filteredData79[len+29].date;
+  // console.log('nd:',date)
+  var nd79 = filteredData79[len].nd;
+  var ed79 = filteredData79[len].ed;
+  var hd79 = filteredData79[len].hd;
+  var nd80 = filteredData80[len].nd;
+  var ed80 = filteredData80[len].ed;
+  var hd80 = filteredData80[len].hd;
+  var nd81 = filteredData81[len].nd;
+  var ed81 = filteredData81[len].ed;
+  var hd81 = filteredData81[len].hd;
+  var nd82 = filteredData82[len].nd;
+  var ed82 = filteredData82[len].ed;
+  var hd82 = filteredData82[len].hd;
+  var nd83 = filteredData83[len].nd;
+  var ed83 = filteredData83[len].ed;
+  var hd83 = filteredData83[len].hd;
+  var nvel79 = filteredData79[len].nvel;
+var evel79 = filteredData79[len].evel;
+var hvel79 = filteredData79[len].hvel;
+
+var nvel80 = filteredData80[len].nvel;
+var evel80 = filteredData80[len].evel;
+var hvel80 = filteredData80[len].hvel;
+
+var nvel81 = filteredData81[len].nvel;
+var evel81 = filteredData81[len].evel;
+var hvel81 = filteredData81[len].hvel;
+
+var nvel82 = filteredData82[len].nvel;
+var evel82 = filteredData82[len].evel;
+var hvel82 = filteredData82[len].hvel;
+
+var nvel83 = filteredData83[len].nvel;
+var evel83 = filteredData83[len].evel;
+var hvel83 = filteredData83[len].hvel;
+
+ 
+//数据
+// var sensorData = [
+//   {nd:}
+// ]
+ // 创建标记
+ var markerData = [
+  { sn: '21100200001271', number: 'JC01', type: 'GNSS', longitude: 100.16090556, latitude: 38.316356, nd: nd79, ed: ed79, hd: hd79, date: '2024-06-01', nvel: nvel79, evel: evel79, hvel: hvel79},
+  { sn: '21100200001285', number: 'JC02', type: 'GNSS', longitude: 100.161530025, latitude: 38.3162559, nd: nd80, ed: ed80, hd: hd80, date: '2024-06-01', nvel: nvel80, evel: evel80,hvel: hvel80},
+  { sn: '21100200001290', number: 'JC03', type: 'GNSS', longitude: 100.16090553, latitude: 38.315993, nd: nd81, ed: ed81, hd: hd81, date: '2024-06-01',nvel: nvel81, evel: evel81, hvel: hvel81},
+  { sn: '21100200001270', number: 'JC04', type: 'GNSS', longitude: 100.16092616, latitude: 38.31568532, nd: nd82, ed: ed82, hd: hd82, date: '2024-06-01',nvel: nvel82, evel: evel82, hvel: hvel82 },
+  { sn: '21100200001260', number: 'JC05', type: 'GNSS', longitude: 100.16110908, latitude: 38.31572915, nd: nd83, ed: ed83, hd: hd83, date: '2024-06-01',nvel: nvel83, evel: evel83, hvel: hvel83
+ }
+  // 可以继续添加更多标记数据
+];
+// console.log(markerData[0])
+// 将标记添加到地图
+markerData.forEach(function(data) {
+  var marker = new T.Marker(new T.LngLat(data.longitude, data.latitude))
   map.addOverLay(marker);
-  var infoWin1 = new T.InfoWindow();
-  var sContent =
-    "<div style='margin:0px;'>" +
-    "<div style='margin:10px 10px; '>" +
-    "<div style='margin:10px 0px 10px 10px;'>设备SN: 21100200001109 <br>设备名称: JC07 <br>监测类型: GNSS" +
-    "</div>" +
-    "</div>";
-  infoWin1.setContent(sContent);
-  marker.addEventListener("click", function () {
-    marker.openInfoWindow(infoWin1);
-  });// 将标注添加到地图中
-}
-onMounted(() => {
-  // 在组件挂载后初始化地图
-  onLoad()
+  // 创建信息窗口内容
+  var infoContent =
+  "<div style='margin:10px 0px 10px 10px;'>设备SN: " + data.sn + "<br>设备编号: " + data.number + "<br>监测类型: " + data.type + "<br>采集日期: " + data.date + "<br>北方向位移: " + data.nd + "<br>东方向位移: " + data.ed + "<br>垂直方向位移: " + data.hd + "<br>北方向变化速率: " + data.nvel + "<br>东方向变化速率: " + data.evel + "<br>垂直方向变化速率: " + data.hvel +"</div>";
+
+  // 创建信息窗口并设置内容
+  var infoWindow = new T.InfoWindow();
+  infoWindow.setContent(infoContent);
+
+  // 监听标记点击事件
+  marker.addEventListener("click", function() {
+    marker.openInfoWindow(infoWindow);
+  });
 });
+
+
+}
+onMounted(async () => {
+  await fetchData(); // 在组件挂载后立即执行 fetchData
+  onLoad(); // 在组件挂载后初始化地图
+});
+
 
 const logout = () => {
   window.location.href = '/'; // 重定向到登录页面
